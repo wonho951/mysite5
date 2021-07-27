@@ -72,7 +72,7 @@ public class UserController {
 	
 	
 	//회원가입
-	@RequestMapping(value = "/user/join", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/user/joinOk", method = {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute UserVo userVo) {
 		System.out.println("[UserController.join]");
 		System.out.println("join : " + userVo);
@@ -82,5 +82,13 @@ public class UserController {
 		return "user/joinOk";
 	}
 	
+	
+	//회원정보 수정폼
+	@RequestMapping(value = "/user/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm() {
+		System.out.println("[UserController.modifyForm()]");
+		
+		return "user/modifyForm";
+	}
 	
 }
