@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.dao.UserDao;
+import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
 
 @Controller
 public class UserController {
 	//필드
 	@Autowired
-	private UserDao userDao;
+	private UserService userService;
 	
 	//생성자
 	//메소드-g/s
@@ -37,9 +38,15 @@ public class UserController {
 		System.out.println("[UserController.login()]");
 		System.out.println(userVo);
 		
-		UserVo authUser = userDao.seletUser(userVo);
+		//dao사용할때
+		//UserVo authUser = userDao.seletUser(userVo);
+		
+		//dao로 바로 연결이 아닌 service 사용할때 --> 이렇게 사용해야함. dao사용 x
+		UserVo authUser = userService.getUser(userVo);
+		
 		
 		//로그인 성공하면(authUser가 null이 아니면)
+		
 		if(authUser != null) {
 			System.out.println("[로그인성공]");
 			session.setAttribute("authUser", authUser);
@@ -52,4 +59,17 @@ public class UserController {
 		//if문에서 리턴값 왔기 때문에 리턴 올수가 없음
 		
 	}
+	
+	
+	
+	//회원가입폼
+	@RequestMapping(value = "/user/joinForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String joinForm() {
+		System.out.println("[UserController.joinForm()]");
+		
+		return "user/joinForm";
+	}
+	
+	
+	
 }
