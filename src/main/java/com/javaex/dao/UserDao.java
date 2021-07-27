@@ -16,6 +16,7 @@ public class UserDao {
 	//메소드-일반
 	
 	
+	//로그인
 	public UserVo seletUser(UserVo userVo) {
 		System.out.println("[UserDao.selectUser()]");
 		//System.out.println(userVo);
@@ -26,4 +27,9 @@ public class UserDao {
 		//authUser처럼 변수 안만들고 바로 리턴주는게 보통임
 		return sqlSession.selectOne("user.selectUser", userVo);
 	}
+	
+	
+	//회원가입
+	
+	
 }

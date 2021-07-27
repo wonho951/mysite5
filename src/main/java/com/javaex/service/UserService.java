@@ -22,4 +22,14 @@ public class UserService {
 		return authUser;
 	}
 	
+	
+	//회원가입
+	public int join(UserVo userVo) {
+		System.out.println("[UserService.join()]");
+		
+		int count = userDao.insert(userVo);
+
+		return count;
+				
+	}
 }
