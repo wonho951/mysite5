@@ -66,6 +66,8 @@
 
 							<!-- //성별 -->
 							<div class="form-group">
+								<span class="form-text">성별</span> 
+								
 								<c:if test = "${userVo.gender == 'male' }">	<!-- "male" 이렇게 하면 에러나고 'male' 이렇게하면 에러 안남.  ' ' 이게 string 감싸는 거인듯 -->
 									<label for="rdo-male">남</label> 
 									<input type="radio" id="rdo-male" name="gender" value="male" checked = "checked"> 
@@ -104,7 +106,7 @@
 		</div>
 		<!-- //container  -->
 
-		<div id="footer">Copyright ⓒ 2020 황일영. All right reserved</div>
+		<c:import url = "/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
 
 	</div>
