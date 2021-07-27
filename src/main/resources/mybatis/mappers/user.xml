@@ -29,4 +29,17 @@
 		]]>
 	</insert>
 
+
+	<!-- 회원정보수정(no만 가져오기) -->
+	<select id = "selectOne" parameterType="int" resultType = "UserVo">
+		<![CDATA[
+			select  no,
+			        id,
+			        password,
+			        name,
+			        gender
+			from users
+			where no = #{no}		
+		]]>
+	</select>
 </mapper>

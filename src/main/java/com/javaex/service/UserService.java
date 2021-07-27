@@ -31,6 +31,14 @@ public class UserService {
 		System.out.println(count);
 		
 		return count;
-				
+	}
+	
+	
+	
+	//회원정보 수정폼
+	public UserVo modifyForm(int no) {
+		System.out.println("[UserService.modifyForm()]");
+		
+		return userDao.selectUser(no);
 	}
 }

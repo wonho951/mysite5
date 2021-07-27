@@ -49,28 +49,40 @@
 
 							<!-- 아이디 -->
 							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> <span class="text-large bold">userid</span>
+								<label class="form-text" for="input-uid">아이디</label> <span class="text-large bold">${userVo.id }</span>
 							</div>
 
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								<label class="form-text" for="input-pass">패스워드</label>
-								<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요">
+								<input type="text" id="input-pass" name="password" value="${userVo.password}" placeholder="비밀번호를 입력하세요">
 							</div>
 
-							<!-- 이메일 -->
+							<!-- 이름 -->
 							<div class="form-group">
 								<label class="form-text" for="input-name">이름</label>
-								<input type="text" id="input-name" name="name" value="" placeholder="이름을 입력하세요">
+								<input type="text" id="input-name" name="name" value="${userVo.name }" placeholder="이름을 입력하세요">
 							</div>
 
-							<!-- //나이 -->
+							<!-- //성별 -->
 							<div class="form-group">
-								<span class="form-text">성별</span> <label for="rdo-male">남</label>
-								<input type="radio" id="rdo-male" name="gender" value="male">
-
-								<label for="rdo-female">여</label>
-								<input type="radio" id="rdo-female" name="gender" value="female">
+								<c:if test = "${userVo.gender == 'male' }">	<!-- "male" 이렇게 하면 에러나고 'male' 이렇게하면 에러 안남.  ' ' 이게 string 감싸는 거인듯 -->
+									<label for="rdo-male">남</label> 
+									<input type="radio" id="rdo-male" name="gender" value="male" checked = "checked"> 
+									
+									<label for="rdo-female">여</label>  
+									<input type="radio" id="rdo-female" name="gender" value="female" >
+								</c:if>
+								
+								<c:if test = "${userVo.gender == 'female' }">
+									<label for="rdo-male">남</label> 
+ 									<input type="radio" id="rdo-male" name="gender" value="male" >
+									
+									
+									<label for="rdo-female">여</label> 
+									<input type="radio" id="rdo-female" name="gender" value="female" checked = "checked">
+								
+								</c:if>
 
 							</div>
 

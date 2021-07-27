@@ -37,4 +37,13 @@ public class UserDao {
 		return sqlSession.insert("user.insert", userVo);
 	}
 	
+	
+	//회원정보 수정폼(no만 가지고 정보 가져오기)
+	public UserVo selectUser(int no) {
+		System.out.println("[UserDao.정보수정(no만가져오기)()]");
+		System.out.println(no);
+		
+		return sqlSession.selectOne("user.selectOne", no);
+	}
+	
 }

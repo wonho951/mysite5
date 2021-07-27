@@ -4,11 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javaex.dao.UserDao;
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
 
@@ -85,10 +86,18 @@ public class UserController {
 	
 	//회원정보 수정폼
 	@RequestMapping(value = "/user/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modifyForm() {
+	public String modifyForm(Model model, HttpSession session) {
 		System.out.println("[UserController.modifyForm()]");
 		
+		int no = ((UserVo)session.getAttribute("authUser")).getNo();
+		
+		UserVo userVo = userService.modifyForm(no);
+		System.out.println(userVo);
+		
+		model.addAttribute("userVo",userVo);
+		
 		return "user/modifyForm";
+		
 	}
 	
 }
