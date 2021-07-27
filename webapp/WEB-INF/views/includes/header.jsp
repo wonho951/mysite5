@@ -5,7 +5,7 @@
 
 <div id="header" class="clearfix">
 	<h1>
-		<a href="">MySite</a>
+		<a href="${pageContext.request.contextPath}/main">MySite</a>
 	</h1>
 
 	<!-- 로그인성공 -->
