@@ -3,17 +3,6 @@
 
 <mapper namespace="user">
 
-	<resultMap id="resultMapPersonVo" type="com.javaex.vo.UserVo ">
-		<result column="no" property="no " />
-		<result column="id" property="id" />
-		<result column="password" property="password" />
-		<result column="name " property="name" />
-		<result column="gender " property="gender" />
-	</resultMap>
-
-
-
-
 	<!-- 로그인용. 한사람의 정보 가져오기 -->
 	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 			<![CDATA[
@@ -28,7 +17,7 @@
 
 
 	<!-- 회원가입 -->
-	<insert id="insert" parameterType = "com.javaex.vo.UserVo">
+	<insert id="insert" parameterType="UserVo">
 		<![CDATA[
 			insert into users 
 			values (seq_user_no.nextval, 

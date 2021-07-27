@@ -15,6 +15,8 @@ public class UserVo {
 	public UserVo() {
 		super();
 	}
+	
+	
 	public UserVo(int no, String id, String password, String name, String gender) {
 		super();
 		this.no = no;
@@ -24,10 +26,8 @@ public class UserVo {
 		this.gender = gender;
 	}
 
-	
 
 	//메소드-g/s
-
 	public int getNo() {
 		return no;
 	}
@@ -61,7 +61,6 @@ public class UserVo {
 
 
 	//메소드-일반
-
 	@Override
 	public String toString() {
 		return "UserVo [no=" + no + ", id=" + id + ", password=" + password + ", name=" + name + ", gender=" + gender
