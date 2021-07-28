@@ -18,15 +18,11 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 		<div id="container" class="clearfix">
-			<div id="aside">
-				<h2>게시판</h2>
-				<ul>
-					<li><a href="">일반게시판</a></li>
-					<li><a href="">댓글게시판</a></li>
-				</ul>
-			</div>
-			<!-- //aside -->
 
+			<!-- 게시판 aside -->
+			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
+			<!-- //aside -->
+			
 			<div id="content">
 
 				<div id="content-head">
