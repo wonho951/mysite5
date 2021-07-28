@@ -32,5 +32,27 @@
 	</select>
 	
 	
+	<!-- 게시글 조회하기 -->
+	<select id = "boardList" parameterType = "String" resultType = "BoardVo">
+		<![CDATA[
+			select   b.no
+			        ,b.title
+			        ,b.content
+			        ,u.name
+			        ,b.hit
+			        ,b.reg_date
+			        ,u.no
+			from board b, users u
+			where b.user_no = u.no		
+		]]>
+		
+		<if test="value != null and value !='' ">
+			and b.title like '%' || #{keyword} ||'%'
+		</if>
+		
+		<![CDATA[
+			order by reg_date desc
+		]]>
+	</select>
 	
 </mapper>

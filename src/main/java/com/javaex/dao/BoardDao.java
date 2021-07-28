@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,6 +39,18 @@ public class BoardDao {
 		
 		//바로 리턴값으로 넘겨도 됨
 		return sqlSession.selectOne("board.selectBoard", no);
+	}
+	
+	
+	
+	//게시판 리스트
+	public List<BoardVo> boardList(String keyword){
+		System.out.println("BoardDao.selectList[]");
+		
+		List<BoardVo> boardList = sqlSession.selectList("board.boardList", keyword);
+		System.out.println(boardList);
+		return boardList;
+		
 	}
 	
 }
