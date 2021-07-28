@@ -19,7 +19,7 @@ public class BoardController {
 	@RequestMapping(value = "/board/read", method = {RequestMethod.GET, RequestMethod.POST})
 	public String read(@RequestParam("no") int no) {
 		System.out.println("[BoardController.read()]");
-		System.out.println(no);
+		//System.out.println(no);
 		
 		BoardVo boardVo = boardService.getBoard(no);
 		
