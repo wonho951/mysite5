@@ -46,4 +46,12 @@ public class UserDao {
 		return sqlSession.selectOne("user.selectOne", no);
 	}
 	
+	
+	//회원정보 수정
+	public int modify(UserVo userVo) {
+		System.out.println("[UserDao.회원정보수정()]");
+		
+		return sqlSession.update("user.update", userVo);
+	}
+	
 }

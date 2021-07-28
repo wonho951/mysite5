@@ -41,4 +41,13 @@ public class UserService {
 		
 		return userDao.selectUser(no);
 	}
+	
+	
+	
+	//회원정보 수정
+	public int modify(UserVo userVo) {
+		System.out.println("[UserService.modify()]");
+		
+		return userDao.modify(userVo);
+	}
 }

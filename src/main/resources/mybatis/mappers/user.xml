@@ -30,7 +30,7 @@
 	</insert>
 
 
-	<!-- 회원정보수정(no만 가져오기) -->
+	<!-- 회원정보수정폼(no만 가져오기) -->
 	<select id = "selectOne" parameterType="int" resultType = "UserVo">
 		<![CDATA[
 			select  no,
@@ -42,4 +42,18 @@
 			where no = #{no}		
 		]]>
 	</select>
+	
+	
+	<!-- 회원정보수정 -->
+	<update id = "update" parameterType = "UserVo">
+		<![CDATA[
+			update users
+			set password = #{password},
+				name = #{name},				
+				gender = #{gender}
+			where no = #{no}
+		]]>
+	</update>
+	
+	
 </mapper>
