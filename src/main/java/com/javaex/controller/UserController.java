@@ -48,6 +48,7 @@ public class UserController {
 		
 		//로그인 성공하면(authUser가 null이 아니면)
 		
+		
 		if(authUser != null) {
 			System.out.println("[로그인성공]");
 			session.setAttribute("authUser", authUser);
@@ -72,8 +73,8 @@ public class UserController {
 	}
 	
 	
-	//회원가입
-	@RequestMapping(value = "/user/joinOk", method = {RequestMethod.GET, RequestMethod.POST})
+	//회원가입 
+	@RequestMapping(value = "/user/join", method = {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute UserVo userVo) {
 		System.out.println("[UserController.join]");
 		System.out.println("join : " + userVo);

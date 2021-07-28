@@ -66,6 +66,14 @@ public class BoardDao {
 	}
 	
 	
+	//게시판 글 삭제
+	public int delete(int no) {
+		System.out.println("Dao : 글 삭제");
+		System.out.println(no);
+		
+		return sqlSession.delete("board.boardDelete", no);
+	}
+	
 
 	
 }

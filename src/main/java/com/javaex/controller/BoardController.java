@@ -39,6 +39,7 @@ public class BoardController {
 	}
 	
 	
+	
 	//리스트
 	@RequestMapping(value = "/board/list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model, @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
@@ -83,7 +84,17 @@ public class BoardController {
 	}
 	
 	
-	
+	//글삭제
+	@RequestMapping(value = "/board/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String delete(@RequestParam("no") int no) {
+		System.out.println("컨트롤러 삭제");
+		System.out.println(no);
+		
+		boardService.delete(no);
+		
+		
+		return "redirect:/board/list";
+	}
 	
 	
 

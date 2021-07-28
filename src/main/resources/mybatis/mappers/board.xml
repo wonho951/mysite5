@@ -72,5 +72,14 @@
 	</insert>
 	
 	
+	<!-- 게시판 글 삭제 -->
+	<delete id = "boardDelete" parameterType = "int">
+		<![CDATA[
+			delete from board
+			where no = #{no}
+		]]>
+	</delete>
+	
+	
 	
 </mapper>

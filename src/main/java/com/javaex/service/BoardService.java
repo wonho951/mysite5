@@ -56,5 +56,13 @@ public class BoardService {
 	}
 	
 	
+	//게시판 글 삭제
+	public int delete(int no) {
+		System.out.println("Service : 글 삭제");
+		
+		return boardDao.delete(no);
+	}
+	
+	
 	
 }

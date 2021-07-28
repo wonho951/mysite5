@@ -57,7 +57,7 @@
 								</tr>
 							</thead>
 							
-							<c:forEach items = "${requestScope.boardList}" var = "boardList">
+							<c:forEach items = "${boardList}" var = "boardList">
 								<tbody>
 									<tr>
 										<td>${boardList.no }</td>
@@ -67,9 +67,12 @@
 										<td>${boardList.name }</td>
 										<td>${boardList.hit }</td>
 										<td>${boardList.regDate }</td>
-										<td>
-											<a href="">[삭제]</a>
-										</td>
+										
+										<c:if test="${authUser.no == boardList.userNo }">
+											<td>
+												<a href="${pageContext.request.contextPath }/board/delete?no=${boardList.no}">[삭제]</a>
+											</td>
+										</c:if>
 									</tr>
 								</tbody>
 							</c:forEach>
@@ -94,8 +97,10 @@
 
 							<div class="clear"></div>
 						</div>
-						<a id="btn_write" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
-
+						
+						<c:if test="${!empty authUser }">
+							<a id="btn_write" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+						</c:if>
 					</div>
 					<!-- //list -->
 				</div>
