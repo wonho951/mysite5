@@ -47,10 +47,25 @@ public class BoardDao {
 	public List<BoardVo> boardList(String keyword){
 		System.out.println("BoardDao.selectList[]");
 		
+		//서비스에서 넘어온 리스트 -> sqlSession사용
 		List<BoardVo> boardList = sqlSession.selectList("board.boardList", keyword);
 		System.out.println(boardList);
+		
+		//xml정보 넘김
 		return boardList;
 		
 	}
+	
+	
+	//게시판 글 등록
+	public int insert(BoardVo boardVo) {
+		System.out.println("Dao : 글 등록");
+		System.out.println(boardVo);
+		
+		return sqlSession.insert("board.boardInsert", boardVo);
+	}
+	
+	
+
 	
 }

@@ -34,11 +34,27 @@ public class BoardService {
 	
 	//게시판 리스트
 	public List<BoardVo> list(String keyword){
-		System.out.println("[BoardService.list]");
+		System.out.println("Service : 리스트");
 		
+		//컨트롤러에서 넘어온 keyword -> Dao로 보냄
 		List<BoardVo> boardList = boardDao.boardList(keyword);
 		System.out.println(boardList);
+		
+		//Dao에서 넘어온거 리턴
 		return boardList;
 	}
+	
+	
+	//게시판 글 등록
+	public int write(BoardVo boardVo) {
+		System.out.println("Service : 글 등록");
+		System.out.println(boardVo);
+		
+		
+		return boardDao.insert(boardVo);
+		
+	}
+	
+	
 	
 }
