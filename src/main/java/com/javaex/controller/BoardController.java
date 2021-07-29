@@ -114,8 +114,11 @@ public class BoardController {
 	
 	//수정
 	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST})
-	public String update(@ModelAttribute BoardVo boardVo) {
+	public String modify(@ModelAttribute BoardVo boardVo) {
 		System.out.println("컨트롤러 수정");
+		System.out.println(boardVo);
+		
+		boardService.modifyForm(boardVo);
 		
 		return null;
 	}
