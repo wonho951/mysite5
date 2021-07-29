@@ -38,6 +38,15 @@ public class GuestbookDao {
 	
 	
 	//삭제
+	public int delete(GuestbookVo guestbookVo) {
+		System.out.println("dao 삭제");
+		
+		return sqlSession.delete("guestbook.guestDelete", guestbookVo);
+	}
+	
+	
+	/*
+	//삭제2
 	public int delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("dao 삭제");
 		
@@ -49,5 +58,5 @@ public class GuestbookDao {
 		
 		
 		return sqlSession.delete("guestbook.guestDelete", guestMap);
-	}
+	}*/
 }

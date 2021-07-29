@@ -55,7 +55,22 @@ public class GuestbookController {
 	}
 	
 	
+	
 	//삭제
+	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("컨트롤러 delete");
+		
+		guestService.delete(guestbookVo);
+		
+		return "redirect:/guestbook/addList";
+	}
+	
+	
+	
+	
+	/*
+	//삭제2
 	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("컨트롤러 delete");
@@ -64,7 +79,7 @@ public class GuestbookController {
 		guestService.delete(no, password);
 		
 		return "redirect:/guestbook/addList";
-	}
+	}*/
 	
 	
 }

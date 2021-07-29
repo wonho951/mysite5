@@ -35,9 +35,18 @@ public class GuestbookService {
 	
 	
 	//삭제
+	public int delete(GuestbookVo guestbookVo) {
+		System.out.println("서비스: 삭제");
+		
+		return guestDao.delete(guestbookVo);
+	}
+	
+	
+	/*
+	//삭제2
 	public int delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("서비스: 삭제");
 		
 		return guestDao.delete(no, password);
-	}
+	}*/
 }
