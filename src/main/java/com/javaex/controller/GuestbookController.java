@@ -60,6 +60,7 @@ public class GuestbookController {
 	public String delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("컨트롤러 delete");
 		
+		//파라미터 하나씩만 꺼내와서 map써볼거임
 		guestService.delete(no, password);
 		
 		return "redirect:/guestbook/addList";
