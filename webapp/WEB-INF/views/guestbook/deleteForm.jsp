@@ -53,6 +53,10 @@
 							</tr>
 						</table>
 						<input type = "hidden" name="no" value = ${param.no }>
+							
+							<c:if test = ${param.result == 'fail' }>
+								<p>비밀번호 틀림. 다시 입력 바람ㅇㅇ</p>	
+							</c:if>
 						
 					</form>
 					

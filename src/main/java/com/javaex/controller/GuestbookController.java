@@ -61,9 +61,15 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("컨트롤러 delete");
 		
-		guestService.delete(guestbookVo);
+		int count = guestService.delete(guestbookVo);
 		
-		return "redirect:/guestbook/addList";
+		if(count == 1) {
+			return "redirect:/guestbook/addList";
+		} else {
+			return "redirect:/guestbook/dform?result=fail&no=" + guestbookVo.getNo();
+		}
+		
+		
 	}
 	
 	
