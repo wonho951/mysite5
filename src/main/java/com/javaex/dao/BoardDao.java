@@ -74,6 +74,14 @@ public class BoardDao {
 		return sqlSession.delete("board.boardDelete", no);
 	}
 	
+	
+	//수정 폼
+	public BoardVo modifyForm(int no) {
+		System.out.println("Dao : 글 수정폼");
+		
+		return sqlSession.selectOne("board.selectBoard", no);
+		
+	}
 
 	
 }

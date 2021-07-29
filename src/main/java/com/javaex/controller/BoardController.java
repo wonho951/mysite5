@@ -17,6 +17,7 @@ import com.javaex.vo.BoardVo;
 import com.javaex.vo.UserVo;
 
 @Controller
+@RequestMapping(value="/board")
 public class BoardController {
 
 	@Autowired
@@ -24,7 +25,7 @@ public class BoardController {
 	
 	
 	//글읽기
-	@RequestMapping(value = "/board/read", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/read", method = {RequestMethod.GET, RequestMethod.POST})
 	public String read(Model model, @RequestParam("no") int no) {
 		System.out.println("[BoardController.read()]");
 		//System.out.println(no);
@@ -41,7 +42,7 @@ public class BoardController {
 	
 	
 	//리스트
-	@RequestMapping(value = "/board/list", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model, @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		System.out.println("컨트롤러 리스트");
 		
@@ -57,7 +58,7 @@ public class BoardController {
 	
 	
 	//글쓰기 폼
-	@RequestMapping(value = "/board/writeForm", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/writeForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String wirteForm() {
 		System.out.println("컨트롤러 글쓰기폼");
 		
@@ -66,7 +67,7 @@ public class BoardController {
 	
 	
 	//글 등록
-	@RequestMapping(value = "/board/write", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/write", method = {RequestMethod.GET, RequestMethod.POST})
 	public String write(@ModelAttribute BoardVo boardVo, HttpSession session) {
 		System.out.println("컨트롤러 글등록");
 		
@@ -85,7 +86,7 @@ public class BoardController {
 	
 	
 	//글삭제
-	@RequestMapping(value = "/board/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@RequestParam("no") int no) {
 		System.out.println("컨트롤러 삭제");
 		System.out.println(no);
@@ -96,8 +97,27 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	
+
+	//수정폼
+	@RequestMapping(value = "/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm(@RequestParam("no") int no, Model model) {
+		System.out.println("컨트롤러 수정폼");
+		
+		BoardVo boardVo = boardService.modifyForm(no);
+		
+		
+		model.addAttribute("boardVo", boardVo);
+		
+		return "board/modifyForm";
+	}
 
 	
+	//수정
+	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String update(@ModelAttribute BoardVo boardVo) {
+		System.out.println("컨트롤러 수정");
+		
+		return null;
+	}
 	
 }

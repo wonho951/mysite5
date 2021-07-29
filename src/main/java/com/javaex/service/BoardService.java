@@ -64,5 +64,17 @@ public class BoardService {
 	}
 	
 	
+	//글 수정폼
+	public BoardVo modifyForm(int no) {
+		System.out.println("Service : 글 수정폼");
+		
+		BoardVo boardVo = boardDao.modifyForm(no);
+		
+		return boardVo;
+	}
+	
+	
+	//글 수정
+	
 	
 }

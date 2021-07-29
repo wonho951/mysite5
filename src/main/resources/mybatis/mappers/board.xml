@@ -41,17 +41,17 @@
 			        ,u.name
 			        ,b.hit
 			        ,b.reg_date
-			        ,u.no
+			        ,b.user_no as userNo
 			from board b, users u
 			where b.user_no = u.no		
 		]]>
 		
-		<if test="value != null and value !='' ">
-			and b.title like '%' || #{keyword} ||'%'
+		 <if test=" value != null and value !='' ">
+			and b.title || u.name like '%' || #{keyword} ||'%'
 		</if>
 		
 		<![CDATA[
-			order by reg_date desc
+			order by b.reg_date desc
 		]]>
 	</select>
 	
@@ -79,6 +79,9 @@
 			where no = #{no}
 		]]>
 	</delete>
+	
+	
+	<!-- 게시판 글 수정폼 -->
 	
 	
 	
