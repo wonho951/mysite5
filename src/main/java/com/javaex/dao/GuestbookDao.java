@@ -38,7 +38,7 @@ public class GuestbookDao {
 	
 	
 	//삭제
-	public String delete(@RequestParam("no") int no, @RequestParam("password") String password) {
+	public int delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("dao 삭제");
 		
 		Map<String, Object> guestMap = new HashMap<String, Object>();
@@ -48,6 +48,6 @@ public class GuestbookDao {
 		System.out.println(guestMap);
 		
 		
-		return sqlSession.delete(guestMap);
+		return sqlSession.delete("guestbook.guestDelete", guestMap);
 	}
 }

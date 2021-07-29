@@ -35,7 +35,7 @@ public class GuestbookService {
 	
 	
 	//삭제
-	public String delete(@RequestParam("no") int no, @RequestParam("password") String password) {
+	public int delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("서비스: 삭제");
 		
 		return guestDao.delete(no, password);
