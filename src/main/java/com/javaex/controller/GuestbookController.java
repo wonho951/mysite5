@@ -66,7 +66,7 @@ public class GuestbookController {
 		if(count == 1) {
 			return "redirect:/guestbook/addList";
 		} else {
-			return "redirect:/guestbook/dform?result=fail&no=" + guestbookVo.getNo();
+			return "guestbook/dform";
 		}
 		
 		

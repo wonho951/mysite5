@@ -38,7 +38,9 @@ public class GuestbookService {
 	public int delete(GuestbookVo guestbookVo) {
 		System.out.println("서비스: 삭제");
 		
-		return guestDao.delete(guestbookVo);
+		int count = guestDao.delete(guestbookVo);
+		
+		return count;
 	}
 	
 	

@@ -52,11 +52,8 @@
 								<td><a href="${pageContext.request.contextPath }/guestbook/addList">[메인으로 돌아가기]</a></td>
 							</tr>
 						</table>
-						<input type = "hidden" name="no" value = ${param.no }>
-							
-							<c:if test = ${param.result == 'fail' }>
-								<p>비밀번호 틀림. 다시 입력 바람ㅇㅇ</p>	
-							</c:if>
+						
+							<input type = "hidden" name="no" value = ${param.no }>
 						
 					</form>
 					
