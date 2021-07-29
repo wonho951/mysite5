@@ -33,4 +33,14 @@
 		]]>
 	</insert>
 
+
+	<!-- 방명록 삭제 -->
+	<delete id = "guestDelete" parameterType = "Map">
+		<![CDATA[
+			delete from guestbook
+			where no = #{no}
+			and password = #{password}
+		]]>
+	</delete>
+	
 </mapper>
