@@ -55,7 +55,7 @@ public class GuestbookController {
 	}
 	
 	
-	
+	/*
 	//삭제
 	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
@@ -66,24 +66,29 @@ public class GuestbookController {
 		if(count == 1) {
 			return "redirect:/guestbook/addList";
 		} else {
-			return "redirect:/guestbook/addList";
+			
 		}
 		
-		
-	}
+	}*/
 	
 	
-	/*
+	
 	//삭제2
 	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("컨트롤러 delete");
 		
 		//파라미터 하나씩만 꺼내와서 map써볼거임
-		guestService.delete(no, password);
+		int count = guestService.delete(no, password);
 		
-		return "redirect:/guestbook/addList";
-	}*/
+		if (count == 1) {
+			return "redirect:/guestbook/addList";
+		} else {
+			return "redirect:/guestbook/addList";
+		}
+		
+		
+	}
 	
 	
 }
