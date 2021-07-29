@@ -118,9 +118,9 @@ public class BoardController {
 		System.out.println("컨트롤러 수정");
 		System.out.println(boardVo);
 		
-		boardService.modifyForm(boardVo);
+		boardService.modify(boardVo);
 		
-		return null;
+		return "redirect:/board/list";
 	}
 	
 }

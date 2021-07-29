@@ -15,7 +15,7 @@
 
 
 
-	<!-- 게시판 1개 정보 가져오기 -->
+	<!-- 게시판 1개 정보 가져오기(읽기,수정폼) -->
 	<select id="selectBoard" parameterType="int" resultType = "BoardVo">
 		<![CDATA[
 			select  b.no,
@@ -81,8 +81,13 @@
 	</delete>
 	
 	
-	<!-- 게시판 글 수정폼 -->
-	
+	<!-- 게시판 글 수정 -->
+	<update id="Update" parameterType = "int">
+		update board
+		set  title = #{title}
+			,content = #{content}
+		where no = #{no}
+	</update>
 	
 	
 </mapper>

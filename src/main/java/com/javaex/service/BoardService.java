@@ -75,6 +75,10 @@ public class BoardService {
 	
 	
 	//글 수정
-	
+	public int modify(BoardVo boardVo) {
+		System.out.println("Service : 글 수정");
+		
+		return boardDao.modify(boardVo);
+	}
 	
 }

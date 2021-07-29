@@ -84,4 +84,12 @@ public class BoardDao {
 	}
 
 	
+	//글 수정
+	public int modify(BoardVo boardVo) {
+		System.out.println("Dao : 글 수정");
+		
+		return sqlSession.update("board.Update", boardVo);
+		
+	}
+	
 }
