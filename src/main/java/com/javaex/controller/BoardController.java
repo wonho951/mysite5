@@ -100,26 +100,75 @@ public class BoardController {
 
 	//수정폼
 	@RequestMapping(value = "/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modifyForm(@RequestParam("no") int no, Model model) {
+	public String modifyForm(@RequestParam("no") int no, Model model, HttpSession session) {
 		System.out.println("컨트롤러 수정폼");
 		
+		//이건 수업시간에 해주신거 -> 주소알면 뚫리니까 방지
+		//현재글의 작성자(번호) == 세션(로그인한 사용자)의 번호 --> 정상인경우
+		//현재글의 작성자(번호) != 세션(로그인한 사용자)의 번호 --> 정상이 아닌 경우
 		BoardVo boardVo = boardService.modifyForm(no);
 		
 		
-		model.addAttribute("boardVo", boardVo);
+		//세션에서 유저 정보 불러옴
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		//로그인 안한경우 ->접속 불가능하게 해야함 -> 메인으로 보냄
+		if(authUser == null) {
+			System.out.println("로그인 안한 경우");
+
+			//포워드 하기전에 모델에 담아줌
+			model.addAttribute("boardVo", boardVo);
+			return "redirect:/main";
+		}
 		
+		//로그인한 사용자 == 글작성자
+		if(authUser.getNo() == boardVo.getUserNo()) {
+			System.out.println("자신의 글인 경우 수정폼 포워드");
+			return "board/modifyForm";
+		}else {
+			System.out.println("다른 사람의 글인 경우");
+			return "redirect:/board/list";
+		}
+		
+		/* 1의 경우
+		//현재글의 작성자(번호)
+		int userNo = boardVo.getUserNo();
+		System.out.println("userNo =" + userNo);
+		
+		
+		//세션(로그인한 사용자)의 번호
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int loginNo = authUser.getNo();
+		System.out.println("loginNo= " + loginNo);
+		
+		if(userNo == loginNo) {
+			model.addAttribute("boardVo", boardVo);
+			return "board/modifyForm";
+		}else {
+			return "redirect:/board/list";
+		}*/
+		
+		
+		//여긴 내가 한거
+		/*
+		model.addAttribute("boardVo", boardVo);
 		return "board/modifyForm";
+		*/
 	}
 
 	
 	//수정
 	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modify(@ModelAttribute BoardVo boardVo) {
+	public String modify(@ModelAttribute BoardVo boardVo, HttpSession session) {
 		System.out.println("컨트롤러 수정");
 		System.out.println(boardVo);
 		
+		//로그인한 사용자만 수정 가능하게끔
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		boardVo.setUserNo(authUser.getNo());
+		
 		boardService.modify(boardVo);
 		
+		/* 제목 본문 로그인 사용자 번호 넘김 */
 		return "redirect:/board/list";
 	}
 	
