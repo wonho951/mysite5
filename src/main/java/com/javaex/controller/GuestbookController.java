@@ -66,13 +66,11 @@ public class GuestbookController {
 		if(count == 1) {
 			return "redirect:/guestbook/addList";
 		} else {
-			return "guestbook/dform";
+			return "redirect:/guestbook/addList";
 		}
 		
 		
 	}
-	
-	
 	
 	
 	/*
