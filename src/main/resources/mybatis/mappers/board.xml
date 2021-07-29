@@ -81,12 +81,13 @@
 	</delete>
 	
 	
-	<!-- 게시판 글 수정 -->
+	<!-- 게시판 글 수정 (자신의 글만 수정되도록 조건절에 userNo도 비교)-->
 	<update id="Update" parameterType = "int">
 		update board
 		set  title = #{title}
 			,content = #{content}
 		where no = #{no}
+		and user_no=#{userNo}
 	</update>
 	
 	
