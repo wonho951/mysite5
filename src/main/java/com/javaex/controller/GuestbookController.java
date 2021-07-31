@@ -45,8 +45,19 @@ public class GuestbookController {
 		return "redirect:/guestbook/addList";
 	}
 	
-	/*
+
+	
 	//삭제폼
+	@RequestMapping(value = "/dform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteForm(@RequestParam("no") int no) {
+		System.out.println("컨트롤러 deleteForm");
+		
+		return "guestbook/deleteForm";
+	}
+	
+	
+	/*
+	//삭제폼2
 	@RequestMapping(value = "/dform", method = {RequestMethod.GET, RequestMethod.POST})
 	public String deleteForm() {
 		System.out.println("컨트롤러 deleteForm");
@@ -54,14 +65,6 @@ public class GuestbookController {
 		return "guestbook/deleteForm";
 	}*/
 	
-	
-	//삭제폼2
-	@RequestMapping(value = "/dform", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteForm(@RequestParam("no") int no) {
-		System.out.println("컨트롤러 deleteForm");
-		
-		return "guestbook/deleteForm";
-	}
 	
 	/*
 	//삭제
