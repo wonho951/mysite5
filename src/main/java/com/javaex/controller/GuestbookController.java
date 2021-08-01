@@ -56,7 +56,7 @@ public class GuestbookController {
 	}
 	
 	
-	/* 없어도 포워드 되는데 왜그르지 갑자기 헷갈리네
+	/* 
 	//삭제폼2
 	@RequestMapping(value = "/dform", method = {RequestMethod.GET, RequestMethod.POST})
 	public String deleteForm() {
