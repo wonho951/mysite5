@@ -49,12 +49,16 @@
 								<td>비밀번호</td>
 								<td><input type="password" name="password"></td>
 								<td class="text-left"><button type="submit">삭제</button></td>
-								<td><a href="${pageContext.request.contextPath }/guestbook/addList">[메인으로 돌아가기]</a></td>
+								<td><a href="${pageContext.request.contextPath }/main">[메인으로 돌아가기]</a></td>
 							</tr>
+					
 						</table>
 						
 							<input type = "hidden" name="no" value = ${param.no }>
-						
+							<br>
+							<c:if test = "${param.result == 'fail' }">
+								<p>비밀번호가 일치하지 않습니다.</p>
+							</c:if>
 					</form>
 					
 				</div>

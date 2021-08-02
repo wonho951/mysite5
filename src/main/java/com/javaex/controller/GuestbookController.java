@@ -66,7 +66,7 @@ public class GuestbookController {
 	}*/
 	
 	
-	/*
+	
 	//삭제
 	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
@@ -77,13 +77,14 @@ public class GuestbookController {
 		if(count == 1) {
 			return "redirect:/guestbook/addList";
 		} else {
-			
+			//비밀번호 틀리면 비밀번호 틀렸다고 다시 dfrom으로 보내버림. 세상에 마상에  =  이거 확인좀 잘해라 제발!!!!
+			return "redirect:/guestbook/dform?result=fail&no=" + guestbookVo.getNo();
 		}
 		
-	}*/
+	}
 	
 	
-	
+	/*
 	//삭제2
 	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@RequestParam("no") int no, @RequestParam("password") String password) {
@@ -95,11 +96,12 @@ public class GuestbookController {
 		if (count == 1) {
 			return "redirect:/guestbook/addList";
 		} else {
-			return "redirect:/guestbook/addList";
+			//다시 삭제폼으로 보내버림
+			return "redirect:/guestbook/dform?no=" + no + "&result=fail";
 		}
 		
 		
-	}
+	}*/
 	
 	
 }

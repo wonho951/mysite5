@@ -36,7 +36,7 @@ public class GuestbookDao {
 		return sqlSession.insert("guestbook.guestInsert", guestbookVo);
 	}
 	
-	/*
+	
 	//삭제
 	public int delete(GuestbookVo guestbookVo) {
 		System.out.println("dao 삭제");
@@ -44,10 +44,10 @@ public class GuestbookDao {
 		int count = sqlSession.delete("guestbook.guestDelete", guestbookVo);
 		
 		return count;
-	}*/
+	}
 	
 	
-	
+	/*
 	//삭제2
 	public int delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("dao 삭제");
@@ -61,5 +61,5 @@ public class GuestbookDao {
 		int count = sqlSession.delete("guestbook.guestDelete2", guestMap);
 		
 		return count;
-	}
+	}*/
 }

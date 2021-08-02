@@ -33,7 +33,7 @@ public class GuestbookService {
 		 return guestDao.insert(guestbookVo);
 	}
 	
-	/*
+	
 	//삭제
 	public int delete(GuestbookVo guestbookVo) {
 		System.out.println("서비스: 삭제");
@@ -41,10 +41,10 @@ public class GuestbookService {
 		int count = guestDao.delete(guestbookVo);
 		
 		return count;
-	}*/
+	}
 	
 	
-	
+	/*
 	//삭제2
 	public int delete(@RequestParam("no") int no, @RequestParam("password") String password) {
 		System.out.println("서비스: 삭제");
@@ -52,5 +52,5 @@ public class GuestbookService {
 		int count = guestDao.delete(no, password); 
 		
 		return count;
-	}
+	}*/
 }
