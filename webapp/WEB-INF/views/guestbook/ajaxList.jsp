@@ -139,7 +139,7 @@
 					
 					//화면에 그리기
 		         for(var i = 0; i < guestList.length; i++) {
-		             render(guestList[i]);	//방명록 글 1개씩 추가하기(그리기)
+		             render(guestList[i], "down");	//방명록 글 1개씩 추가하기(그리기). down은 밑으로 붙으라고 하는거.
 		          }
 				},
 				error : function(XHR, status, error) {
@@ -188,9 +188,11 @@
 				//data : {name: userName, password: password, content: content},
 				data : guestbookVo,
 				
-				dataType : "json",
-				success : function(result){
+				//dataType : "json",
+				success : function(guestbookVo){
 					/*성공시 처리해야될 코드 작성*/
+					console.log(guestbookVo);
+					render(guestbookVo, "up");
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
@@ -200,16 +202,8 @@
 		});
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		//방명록 1개씩 랜더링
-		function render(guestbookVo){
+		function render(guestbookVo, type){
             var str = "";
             str += '<table class="guestRead">';
             str += '   <colgroup>';
@@ -229,7 +223,15 @@
             str += '   </tr>';
             str += '</table> ';
             
-            $("#listArea").append(str);
+            if(type === 'down'){
+            	$("#listArea").append(str);            	
+            } else if(type === 'up'){
+            	$("#listArea").prepend(str);
+            } else {
+            	console.log("방향을 지정해 주세요");
+            }
+            
+            
 		}
 		
 	

@@ -35,14 +35,15 @@ public class ApiGuestbookController {
 	
 	
 	//ajax 방명록 저장
+	@ResponseBody
 	@RequestMapping(value = "/api/guestbook/write", method = {RequestMethod.GET, RequestMethod.POST})
-	public String write(@ModelAttribute GuestbookVo guestbookVo) {
+	public GuestbookVo write(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("[ApiGuestbookController.write()]");
 		System.out.println(guestbookVo);
 		
 		GuestbookVo resultVo = guestService.writeResultVo(guestbookVo);	//새로 dao만든거임. -> xml에서 insert문 달라지기 때문에
 		
-		return "";
+		return resultVo;
 	}
 	
 	

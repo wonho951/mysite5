@@ -36,14 +36,18 @@ public class GuestbookService {
 	
 	//방명록 글 저장_게시글 가져오기 (ajax)
 	public GuestbookVo writeResultVo(GuestbookVo guestbookVo) {
-		
-		//글저장
 		System.out.println("[ApiGuestbookService.writeResultVo()]");
-		int no = guestDao.insertGuestbookKey(guestbookVo);
+		//글저장
+		System.out.println(guestbookVo); //no값 없다.
+		int count = guestDao.insertGuestbookKey(guestbookVo);
+		System.out.println(guestbookVo); //no값 있다.
 		
+		int no = guestbookVo.getNo();	//방금 저장한 글 번호 꺼내옴.
 		
 		//글 가져오기(방금 등록한 번호)
-		return null;
+		GuestbookVo resultVo= guestDao.selectGuestbook(no);
+		
+		return resultVo;
 	}
 	
 	//삭제

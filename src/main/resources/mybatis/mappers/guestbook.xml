@@ -36,6 +36,7 @@
 
 	<!-- 방명록 글 저장 (키값 저장) -->
 	<!-- no는 setNo로 작동. 시퀀스 번호이기 때문에 타입은 int -->
+	<!-- dual은 테이블 이름을 정할 수 없을때 가상의 테이블을 만드는거 -->
 	<insert id = "insertGuestbookKey" parameterType = "GuestbookVo">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			<![CDATA[
@@ -53,6 +54,19 @@
 		]]>
 	</insert>
 
+
+	<!-- 방명록 글 1개 가져오기 ajax -->
+	<select id = "selectGuestbook" parameterType = "int" resultType = "GuestbookVo">
+		<![CDATA[
+			select  no,
+			        name,
+			        password,
+			        content,
+			        reg_date regDate
+			from guestbook
+			where no = #{no}
+		]]>
+	</select>
 
 
 	<!-- 방명록 삭제 -->
