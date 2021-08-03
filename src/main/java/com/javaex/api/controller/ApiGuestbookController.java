@@ -40,6 +40,7 @@ public class ApiGuestbookController {
 		System.out.println("[ApiGuestbookController.write()]");
 		System.out.println(guestbookVo);
 		
+		guestService.writeSelectKey(guestbookVo);
 		
 		return "";
 	}

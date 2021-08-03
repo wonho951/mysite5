@@ -173,7 +173,8 @@
 			
 			var guestbookVo = {
 				name: userName,	//$("#input-uname").val(); -> 바로 사용 가능
-				
+				password : password,	//$("#input-pass").val();
+				content: content	//$("[name = 'content']").val();
 				
 			};
 			
@@ -184,8 +185,9 @@
 				url : "${pageContext.request.contextPath }/api/guestbook/write",
 				type : "get",
 				//contentType : "application/json",
-				data : {name: userName, password: password, content: content},
-
+				//data : {name: userName, password: password, content: content},
+				data : guestbookVo,
+				
 				dataType : "json",
 				success : function(result){
 					/*성공시 처리해야될 코드 작성*/
