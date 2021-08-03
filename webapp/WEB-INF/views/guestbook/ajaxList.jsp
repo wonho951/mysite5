@@ -78,7 +78,7 @@
 
 					
 					<div id="listArea">
-						jquery로 리스트 그리는 영역
+						
 					</div>
 					
 					
