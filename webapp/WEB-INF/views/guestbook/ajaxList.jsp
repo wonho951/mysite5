@@ -9,7 +9,8 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/guestbook.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src = "${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4"></script>
+
+<script type="text/javascript" src = "${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="" method="">
+					<form action="" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
@@ -47,12 +48,12 @@
 							<tbody>
 								<tr>
 									<th><label class="form-text" for="input-uname">이름</label>
-									</td>
+									</th>
 									<td>
 										<input id="input-uname" type="text" name="name">
 									</td>
 									<th><label class="form-text" for="input-pass">패스워드</label>
-									</td>
+									</th>
 									<td>
 										<input id="input-pass" type="password" name="pass">
 									</td>
@@ -141,7 +142,22 @@
 		//화면이 로딩되기 직전 -> DOM생성
 		$(document).ready(function(){
 			console.log("화면 로딩 직전");
-			
+			//ajax로 요청하기
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/api/guestbook/list",		
+				type : "post",
+				//contentType : "application/json",
+				//data : {name: ”홍길동"},
+
+				//dataType : "json",
+				success : function(result){
+					/*성공시 처리해야될 코드 작성*/
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
 			
 		});
 	
