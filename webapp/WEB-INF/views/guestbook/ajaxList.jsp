@@ -76,30 +76,12 @@
 
 					</form>
 
-
-					<!-- 
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td>
-								<a href="">[삭제]</a>
-							</td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
-						</tr>
-					</table>
-					<!-- //guestRead -->
-
-
+					
+					<div id = "ListArea">
+						jquery로 리스트 그리는 영역
+					</div>
+					
+					
 					<!-- 
 					<table class="guestRead">
 						<colgroup>
@@ -151,8 +133,13 @@
 				//data : {name: ”홍길동"},
 
 				//dataType : "json",
-				success : function(result){
+				success : function(guestList){
 					/*성공시 처리해야될 코드 작성*/
+					console.log(guestList);
+					
+					//화면에 그리기
+					
+					
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
