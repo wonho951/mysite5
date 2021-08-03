@@ -75,6 +75,8 @@
 
 					</form>
 
+
+					<!-- 
 					<table class="guestRead">
 						<colgroup>
 							<col style="width: 10%;">
@@ -96,6 +98,8 @@
 					</table>
 					<!-- //guestRead -->
 
+
+					<!-- 
 					<table class="guestRead">
 						<colgroup>
 							<col style="width: 10%;">
@@ -131,5 +135,26 @@
 	<!-- //wrap -->
 
 </body>
+
+
+	<script type="text/javascript">
+		//화면이 로딩되기 직전 -> DOM생성
+		$(document).ready(function(){
+			console.log("화면 로딩 직전");
+			
+			
+		});
+	
+	
+	</script>
+
+
+
+
+
+
+
+
+
 
 </html>
