@@ -34,6 +34,14 @@
 	</insert>
 
 
+	<!-- 방명록 글 저장 키값 -->
+	<insert id = "insertGuestbookKey">
+	
+	
+	</insert>
+
+
+
 	<!-- 방명록 삭제 -->
 	<delete id="guestDelete" parameterType="GuestbookVo">
 		<![CDATA[
