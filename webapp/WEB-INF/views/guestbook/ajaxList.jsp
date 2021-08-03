@@ -65,7 +65,7 @@
 								</tr>
 								<tr class="button-area">
 									<td colspan="4" class="text-center">
-										<button type="submit">등록</button>
+										<button id = "btnSubmit" type="submit">등록</button>
 									</td>
 								</tr>
 							</tbody>
@@ -77,7 +77,7 @@
 					</form>
 
 					
-					<div id = "ListArea">
+					<div id="listArea">
 						jquery로 리스트 그리는 영역
 					</div>
 					
@@ -138,8 +138,9 @@
 					console.log(guestList);
 					
 					//화면에 그리기
-					
-					
+		         for(var i = 0; i < guestList.length; i++) {
+		             render(guestList[i]);	//방명록 글 1개씩 추가하기(그리기)
+		          }
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
@@ -147,13 +148,51 @@
 			});
 			
 		});
-	
+
+		
+		//로딩이 끝난후
+		//등록버튼 클릭할 때
+		$("#btnSubmit").on("click", function(){
+			
+			
+			
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//방명록 1개씩 랜더링
+		function render(guestbookVo){
+            var str = "";
+            str += '<table class="guestRead">';
+            str += '   <colgroup>';
+            str += '      <col style="width: 10%;">';
+            str += '      <col style="width: 40%;">';
+            str += '      <col style="width: 40%;">';
+            str += '      <col style="width: 10%;">';
+            str += '   </colgroup>';
+            str += '   <tr>';
+            str += '      <td>' + guestbookVo.no  + '</td> ';
+            str += '      <td>' + guestbookVo.name  + '</td>';
+            str += '      <td>' + guestbookVo.regDate  + '</td>';
+            str += '      <td><a href="">[삭제]</a></td>';
+            str += '   </tr> ';
+            str += '   <tr> ';
+            str += '      <td colspan=4 class="text-left">' + guestbookVo.content  + '</td> ';
+            str += '   </tr>';
+            str += '</table> ';
+            
+            $("#listArea").append(str);
+		}
+		
 	
 	</script>
-
-
-
-
 
 
 
