@@ -40,7 +40,7 @@ public class ApiGuestbookController {
 		System.out.println("[ApiGuestbookController.write()]");
 		System.out.println(guestbookVo);
 		
-		guestService.writeSelectKey(guestbookVo);
+		guestService.writeResultVo(guestbookVo);	//새로 dao만든거임. -> xml에서 insert문 달라지기 때문에
 		
 		return "";
 	}
