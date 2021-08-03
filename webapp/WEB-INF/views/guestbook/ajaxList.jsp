@@ -37,7 +37,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="" method="get">
+					<form action="${pageContext.request.contextPath }" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
@@ -153,9 +153,48 @@
 		//로딩이 끝난후
 		//등록버튼 클릭할 때
 		$("#btnSubmit").on("click", function(){
+			//원래 폼에 액션 작동 안하게 하는거
+			event.preventDefault();	//원래 action 기능 사용 못하게함
+			console.log("등록버튼 클릭")
 			
 			
+			//name값 읽어오기
+			var userName = $("#input-uname").val();
+			console.log(userName);
 			
+			//password값 읽어오기
+			var password = $("#input-pass").val();
+			console.log(password);
+			
+			//content값 읽어오기
+			var content = $("[name = 'content']").val();
+			console.log(content)
+			
+			
+			var guestbookVo = {
+				name: userName,	//$("#input-uname").val(); -> 바로 사용 가능
+				
+				
+			};
+			
+			//데이터 ajax방식으로 서버에 전송
+			$.ajax({
+				
+				//url : "${pageContext.request.contextPath }/api/guestbook/write?name=" + userName + "&password=" + password + "&content=" + content,		
+				url : "${pageContext.request.contextPath }/api/guestbook/write",
+				type : "get",
+				//contentType : "application/json",
+				data : {name: userName, password: password, content: content},
+
+				dataType : "json",
+				success : function(result){
+					/*성공시 처리해야될 코드 작성*/
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+
 		});
 		
 		

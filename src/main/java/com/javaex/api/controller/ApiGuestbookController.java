@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,4 +31,22 @@ public class ApiGuestbookController {
 		
 		return guestbookList;
 	}
+	
+	
+	
+	//ajax 방명록 저장
+	@RequestMapping(value = "/api/guestbook/write", method = {RequestMethod.GET, RequestMethod.POST})
+	public String write(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("[ApiGuestbookController.write()]");
+		System.out.println(guestbookVo);
+		
+		
+		return "";
+	}
+	
+	
+	
+	
+	
+	
 }
