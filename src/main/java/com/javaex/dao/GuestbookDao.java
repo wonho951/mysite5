@@ -37,6 +37,13 @@ public class GuestbookDao {
 	}
 	
 	
+	//방명록 글 저장
+	public int insertGuestbookKey(GuestbookVo guestbookVo) {
+		System.out.println("[guestbookDao.insertGuestbookKey]");
+		
+		return sqlSession.insert("guestbook.insertGuestbookKey", guestbookVo);
+	}
+	
 	//삭제
 	public int delete(GuestbookVo guestbookVo) {
 		System.out.println("dao 삭제");
