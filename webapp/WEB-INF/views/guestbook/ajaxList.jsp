@@ -279,6 +279,11 @@
 				//dataType : "json",
 				success : function(result){
 					/*성공시 처리해야될 코드 작성*/
+					
+					
+					//모달창 닫기
+					
+					/* 리스트에 삭제버튼이 있던 테이블 화면에서 지운다. -> 삭제 누르면 삭제 누른 항목 브라우저에서 지워져야한다. -> DB에서는 지워짐 */
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
