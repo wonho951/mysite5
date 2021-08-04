@@ -257,13 +257,24 @@
 		$("#modalBtnDel").on("click", function(){
 			console.log("모달창 삭제버튼 클릭");
 			
+			
+			var guestbookVo = {
+				no: $("[name=no]").val(),
+				password: $("[name=password]").val()
+			};
+			
+			console.log(guestbookVo);
+			
+			
+			
+			
 			//서버에 삭제요청(no, password 전달)
 			$.ajax({
 				
 				url : "${pageContext.request.contextPath }/api/guestbook/remove",		
 				type : "post",
 				//contentType : "application/json",
-				//data : {name: ”홍길동"},
+				data : guestbookVo,
 
 				//dataType : "json",
 				success : function(result){
