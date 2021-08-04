@@ -121,6 +121,35 @@
 	</div>
 	<!-- //wrap -->
 
+
+
+
+	<!-- 삭제 모달창 -->
+	<div id = "delModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">방명록 삭제</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<label for = "modalPassword">비밀번호</label>
+	        <input id = "modalPassword" type = "password" name = "password" value = "">
+	        
+	        <input type = "text" name = "no" value = "">
+	      </div>
+	      <div class="modal-footer">
+	        
+	        <button type="button" class="btn btn-primary">삭제</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+
+
 </body>
 
 
@@ -213,7 +242,12 @@
 			var tag = $(this);
 			console.log(tag);
 			
+			//hidden영역에 no값 입력하기
 			
+			
+			
+			
+			$("#delModal").modal();
 		});
 		
 		
@@ -232,7 +266,7 @@
             str += '      <td>' + guestbookVo.no  + '</td> ';
             str += '      <td>' + guestbookVo.name  + '</td>';
             str += '      <td>' + guestbookVo.regDate  + '</td>';
-            str += '      <td><button class = "btnDel">[삭제]</button></td>';	 //링크가 아니고 다른창을 띄울거기 때문에 a링크 사용 안함. 누르면 모달창(팝업창 같은거) 띄움
+            str += '      <td><button class = "btnDel" data-no = "' + guestbookVo.no + '">[삭제]</button></td>';	 //링크가 아니고 다른창을 띄울거기 때문에 a링크 사용 안함. 누르면 모달창(팝업창 같은거) 띄움
             str += '   </tr> ';
             str += '   <tr> ';
             str += '      <td colspan=4 class="text-left">' + guestbookVo.content  + '</td> ';
