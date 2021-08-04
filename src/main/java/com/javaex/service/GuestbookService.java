@@ -17,7 +17,7 @@ public class GuestbookService {
 	
 	//리스트
 	public List<GuestbookVo> list(){
-		//System.out.println("서비스 리스트");
+		System.out.println("서비스 리스트");
 		
 		List<GuestbookVo> guestList = guestDao.getGuestList();
 		//System.out.println("서비스 리스트" + guestList.toString());

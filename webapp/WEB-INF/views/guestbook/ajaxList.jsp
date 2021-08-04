@@ -226,10 +226,6 @@
 		//리스트에서 삭제 버튼을 클릭할때
 		$("#listArea").on("click", ".btnDel", function(){	//직접주지말고 부모한테 먹임. 그리고 btnDel에게 일시킨다.
 			console.log("삭제버튼 클릭");
-			
-		
-			
-		
 		
 			//hidden영역에 no값 입력하기
 			var no = $(this).data("no");	//data에 담은 no값 꺼내기
@@ -322,7 +318,7 @@
 					console.error(status + " : " + error);
 				}
 			});
-		}
+		};
 		
 		
 		//그리는 문법임

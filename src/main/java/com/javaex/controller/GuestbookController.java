@@ -117,6 +117,17 @@ public class GuestbookController {
 	
 	
 	
+	//2021.08.04 ajax방식(혼자해본거)
+	//ajax 방명록 메인페이지
+	@RequestMapping(value = "/ajaxMain2", method = {RequestMethod.GET, RequestMethod.POST})
+	public String ajaxMain2() {
+		System.out.println("[controller.ajaxMain2()]");
+		
+		
+		return "guestbook/ajaxList2";
+	}
+	
+	
 	
 	
 	

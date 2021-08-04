@@ -19,7 +19,7 @@ public class ApiGuestbookController {
 	@Autowired
 	private GuestbookService guestService;
 	
-	
+	/*
 	//ajax방식으로 리스트 가져오기
 	@ResponseBody	//리턴에 보낸 리턴값을 ResponseBody에 보내라
 	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
@@ -64,6 +64,49 @@ public class ApiGuestbookController {
 		return count;
 	}
 	
+	/***************************************************/
+	
+	//ajax방식으로 리스트 가져오기
+	@ResponseBody	//리턴에 보낸 리턴값을 ResponseBody에 보내라
+	@RequestMapping(value = "/list2", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<GuestbookVo> List2() {
+		System.out.println("[방명록 리스트]");
+		
+		List<GuestbookVo> guestbookList= guestService.list();
+		
+		System.out.println(guestbookList);
+		
+		return guestbookList;
+	}
 	
 	
+	
+	//ajax 방명록 저장
+	@ResponseBody
+	@RequestMapping(value = "/write2", method = {RequestMethod.GET, RequestMethod.POST})
+	public GuestbookVo write2(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("[방명록 저장]");
+		System.out.println(guestbookVo);
+		
+		GuestbookVo resultVo = guestService.writeResultVo(guestbookVo);	//새로 dao만든거임. -> xml에서 insert문 달라지기 때문에
+		
+		return resultVo;
+	}
+	
+	
+	//ajax 방명록 삭제
+	@ResponseBody
+	@RequestMapping(value = "/remove2", method = {RequestMethod.GET, RequestMethod.POST})
+	public int remove2(@ModelAttribute GuestbookVo guestbookVo) {
+		//System.out.println("[ApiGuestbookController.remove()]");
+		
+		//System.out.println(guestbookVo);
+		
+		int count = guestService.delete(guestbookVo);
+		
+		
+		
+		
+		return count;
+	}
 }
