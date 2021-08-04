@@ -160,15 +160,15 @@ function render(guestbookVo, type){
     str += '</table> ';
     
     
-    $("#listArea").append(str);
-    /*
+    
+    
     if(type === 'down'){
     	$("#listArea").append(str); 	//리스트 나오게 하는 거임. 백날 위에꺼 코딩 해놓고 아 왜 안나와 하면 안나옴ㅋ.ㅋ            	
     } else if(type === 'up'){
     	$("#listArea").prepend(str);
     } else {
     	console.log("방향을 지정해 주세요");
-    }*/
+    }
 };
 
 
@@ -200,6 +200,33 @@ $("#btnSubmit").on("click", function(){
 		password : $("#input-pass").val(),
 		content : $("[name = 'content'").val()
 	}
+	
+	//데이터를 ajax방식으로 서버에 전송
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/api/guestbook/write2",     		
+		type : "get",
+		//contentType : "application/json",
+		data : guestbookVo,
+		//data : {name: userName, password : password, content : content},
+		
+
+		dataType : "json",
+		success : function(guestbookVo){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(guestbookVo);
+			render(guestbookVo, "up");
+			
+			//입력폼 초기화
+			$("#input-uname").val("");	//()안에 ""있으면 값 비워줌
+			$("#input-pass").val("");
+			$("[name = 'content']").val("");
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+
 });
 
 
