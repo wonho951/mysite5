@@ -51,9 +51,13 @@ public class ApiGuestbookController {
 	//ajax 방명록 삭제
 	@RequestMapping(value = "/remove", method = {RequestMethod.GET, RequestMethod.POST})
 	public String remove(@ModelAttribute GuestbookVo guestbookVo) {
-		System.out.println("[ApiGuestbookController.remove()]");
+		//System.out.println("[ApiGuestbookController.remove()]");
 		
-		System.out.println(guestbookVo);
+		//System.out.println(guestbookVo);
+		
+		int count = guestService.delete(guestbookVo);
+		
+		
 		
 		
 		return "";

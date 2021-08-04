@@ -82,7 +82,7 @@
 
 					
 					<div id="listArea">
-						
+						<!-- jquery 그리는 영역 -->
 					</div>
 					
 					
@@ -260,7 +260,7 @@
 			
 			var guestbookVo = {
 				no: $("[name=no]").val(),
-				password: $("[name=password]").val()
+				password: $("[name=password]").val()	//등록에 pass라고 되어있어서 돌아가지만 password로 겹치면 id값을 주거나 해야함.
 			};
 			
 			console.log(guestbookVo);
