@@ -13,6 +13,7 @@ import com.javaex.service.GuestbookService;
 import com.javaex.vo.GuestbookVo;
 
 @Controller
+@RequestMapping(value = "/api/guestbook")
 public class ApiGuestbookController {
 
 	@Autowired
@@ -21,7 +22,7 @@ public class ApiGuestbookController {
 	
 	//ajax방식으로 리스트 가져오기
 	@ResponseBody	//리턴에 보낸 리턴값을 ResponseBody에 보내라
-	@RequestMapping(value = "/api/guestbook/list", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<GuestbookVo> List() {
 		System.out.println("[ApiGuestbookController.list()]");
 		
@@ -36,7 +37,7 @@ public class ApiGuestbookController {
 	
 	//ajax 방명록 저장
 	@ResponseBody
-	@RequestMapping(value = "/api/guestbook/write", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/write", method = {RequestMethod.GET, RequestMethod.POST})
 	public GuestbookVo write(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("[ApiGuestbookController.write()]");
 		System.out.println(guestbookVo);
@@ -47,7 +48,12 @@ public class ApiGuestbookController {
 	}
 	
 	
-	
+	//ajax 방명록 삭제
+	@RequestMapping(value = "/remove", method = {RequestMethod.GET, RequestMethod.POST})
+	public String remove() {
+		
+		return "";
+	}
 	
 	
 	

@@ -140,7 +140,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        
-	        <button type="button" class="btn btn-primary">삭제</button>
+	        <button id = "modalBtnDel" type="button" class="btn btn-primary">삭제</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -235,22 +235,47 @@
 		});
 		
 		
-		//삭제 버튼을 클릭할때
+		//리스트에서 삭제 버튼을 클릭할때
 		$("#listArea").on("click", ".btnDel", function(){	//직접주지말고 부모한테 먹임. 그리고 btnDel에게 일시킨다.
 			console.log("삭제버튼 클릭");
 			
-			var tag = $(this);
-			console.log(tag);
-			
 			//hidden영역에 no값 입력하기
+			var no = $(this).data("no");	//data에 담은 no값 꺼내기
+			console.log(no);
+			$("[name=no]").val(no);	//data에 no이런거는 소문자만 사용. 대문자 인식못함
 			
 			
+			//비밀번호 창 초기화
+			$("#modalPassword").val("");
 			
-			
+			//모달창 보이기
 			$("#delModal").modal();
 		});
 		
 		
+		//삭제 모달창의 삭제버튼 클릭할때
+		$("#modalBtnDel").on("click", function(){
+			console.log("모달창 삭제버튼 클릭");
+			
+			//서버에 삭제요청(no, password 전달)
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/api/guestbook/remove",		
+				type : "post",
+				//contentType : "application/json",
+				//data : {name: ”홍길동"},
+
+				//dataType : "json",
+				success : function(result){
+					/*성공시 처리해야될 코드 작성*/
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+
+			
+		});
 		
 		//방명록 1개씩 랜더링
 		function render(guestbookVo, type){
