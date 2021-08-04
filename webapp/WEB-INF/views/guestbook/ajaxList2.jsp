@@ -152,15 +152,14 @@ function render(guestbookVo, type){
     str += '      <td>' + guestbookVo.no  + '</td> ';
     str += '      <td>' + guestbookVo.name  + '</td>';
     str += '      <td>' + guestbookVo.regDate  + '</td>';
-    str += '      <td><button class = "btnDel">[삭제]</button></td>';	 //링크가 아니고 다른창을 띄울거기 때문에 a링크 사용 안함. 누르면 모달창(팝업창 같은거) 띄움
+    str += '      <td><button class = "btnDel">[삭제]</button></td>';	 
     str += '   </tr> ';
     str += '   <tr> ';
     str += '      <td colspan=4 class="text-left">' + guestbookVo.content + '</td> ';
     str += '   </tr>';
     str += '</table> ';
     
-    
-    
+    $("#listArea").append(str);
     
     if(type === 'down'){
     	$("#listArea").append(str); 	//리스트 나오게 하는 거임. 백날 위에꺼 코딩 해놓고 아 왜 안나와 하면 안나옴ㅋ.ㅋ            	
@@ -169,10 +168,11 @@ function render(guestbookVo, type){
     } else {
     	console.log("방향을 지정해 주세요");
     }
+    
 };
 
 
-//화면 로딩 끝난 후----------> 리스트 불러왔으니 나머지 기능이 동작하는 건가?
+//화면 로딩 끝난 후
 //등록 버튼 클릭할때
 $("#btnSubmit").on("click", function(){
 	
@@ -200,6 +200,7 @@ $("#btnSubmit").on("click", function(){
 		password : $("#input-pass").val(),
 		content : $("[name = 'content'").val()
 	}
+	
 	
 	//데이터를 ajax방식으로 서버에 전송
 	$.ajax({
