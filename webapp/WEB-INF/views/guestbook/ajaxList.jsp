@@ -154,32 +154,14 @@
 
 
 	<script type="text/javascript">
+	
 		//화면이 로딩되기 직전 -> DOM생성
 		$(document).ready(function(){
 			console.log("화면 로딩 직전");
-			//ajax로 요청하기
-			$.ajax({
-				
-				url : "${pageContext.request.contextPath }/api/guestbook/list",		
-				type : "post",
-				//contentType : "application/json",
-				//data : {name: ”홍길동"},
-
-				//dataType : "json",
-				success : function(guestList){
-					/*성공시 처리해야될 코드 작성*/
-					console.log(guestList);
-					
-					//화면에 그리기
-		         for(var i = 0; i < guestList.length; i++) {
-		             render(guestList[i], "down");	//방명록 글 1개씩 추가하기(그리기). down은 밑으로 붙으라고 하는거.
-		          }
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-			});
 			
+			//ajax로 요청하기
+			fetchList();
+			//나중에 코드 볼때 한눈에 알아 볼 수 있게끔 하기
 		});
 
 		
@@ -217,15 +199,21 @@
 				//url : "${pageContext.request.contextPath }/api/guestbook/write?name=" + userName + "&password=" + password + "&content=" + content,		
 				url : "${pageContext.request.contextPath }/api/guestbook/write",
 				type : "get",
-				//contentType : "application/json",
+				//contentType : "application/json",	//json방식으로 보내겠다!
 				//data : {name: userName, password: password, content: content},
 				data : guestbookVo,
 				
-				//dataType : "json",
+				dataType : "json",
 				success : function(guestbookVo){
 					/*성공시 처리해야될 코드 작성*/
 					console.log(guestbookVo);
 					render(guestbookVo, "up");
+					
+					//입력폼 초기화
+					$("#input-uname").val("");	//()안에 ""있으면 값 비워줌
+					$("#input-pass").val("");
+					$("[name = 'content']").val("");
+					
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
@@ -239,6 +227,10 @@
 		$("#listArea").on("click", ".btnDel", function(){	//직접주지말고 부모한테 먹임. 그리고 btnDel에게 일시킨다.
 			console.log("삭제버튼 클릭");
 			
+		
+			
+		
+		
 			//hidden영역에 no값 입력하기
 			var no = $(this).data("no");	//data에 담은 no값 꺼내기
 			console.log(no);
@@ -253,10 +245,13 @@
 		});
 		
 		
+		
+		//event
 		//삭제 모달창의 삭제버튼 클릭할때
 		$("#modalBtnDel").on("click", function(){
 			console.log("모달창 삭제버튼 클릭");
 			
+			var no = $("[name=no]").val();
 			
 			var guestbookVo = {
 				no: $("[name=no]").val(),
@@ -264,8 +259,6 @@
 			};
 			
 			console.log(guestbookVo);
-			
-			
 			
 			
 			//서버에 삭제요청(no, password 전달)
@@ -276,14 +269,23 @@
 				//contentType : "application/json",
 				data : guestbookVo,
 
-				//dataType : "json",
-				success : function(result){
+				dataType : "json",
+				success : function(count){
 					/*성공시 처리해야될 코드 작성*/
 					
+					if(count === 1){
 					
-					//모달창 닫기
+						//모달창 닫기
+						$("#delModal").modal("hide");	//보일때는 ()안에 아무것도 안씀
+						
+						/* 리스트에 삭제버튼이 있던 테이블 화면에서 지운다. -> 삭제 누르면 삭제 누른 항목 브라우저에서 지워져야한다. -> DB에서는 지워짐 */
+					$("#t-" + no).remove();
+					} else {
+						//모달창 닫기
+						$("#delModal").modal("hide");	//보일때는 ()안에 아무것도 안씀
+					}
 					
-					/* 리스트에 삭제버튼이 있던 테이블 화면에서 지운다. -> 삭제 누르면 삭제 누른 항목 브라우저에서 지워져야한다. -> DB에서는 지워짐 */
+					
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
@@ -293,10 +295,41 @@
 			
 		});
 		
+		
+		
+		//리스트 가져오기
+		function fetchList(){
+			$.ajax({
+				
+				/******여긴 요청 보내는거********/
+				url : "${pageContext.request.contextPath }/api/guestbook/list",		
+				type : "post",
+				//contentType : "application/json",
+				//data : {name: ”홍길동"},
+
+				/******여긴 요청 받는거********/
+				//dataType : "json",			//json방식으로 받겠다
+				success : function(guestList){
+					/*성공시 처리해야될 코드 작성*/
+					console.log(guestList);
+					
+					//화면에 그리기
+			         for(var i = 0; i < guestList.length; i++) {
+			             render(guestList[i], "down");	//방명록 글 1개씩 추가하기(그리기). down은 밑으로 붙으라고 하는거.
+			          }
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		}
+		
+		
+		//그리는 문법임
 		//방명록 1개씩 랜더링
 		function render(guestbookVo, type){
             var str = "";
-            str += '<table class="guestRead">';
+            str += '<table id = "t-' + guestbookVo.no + '" class="guestRead">';	//id값은 테이블이라 t-이고 각 테이블마다 vo의 no값이 있음
             str += '   <colgroup>';
             str += '      <col style="width: 10%;">';
             str += '      <col style="width: 40%;">';
