@@ -216,7 +216,7 @@
             str += '      <td>' + guestbookVo.no  + '</td> ';
             str += '      <td>' + guestbookVo.name  + '</td>';
             str += '      <td>' + guestbookVo.regDate  + '</td>';
-            str += '      <td><a href="">[삭제]</a></td>';
+            str += '      <td><a id = btndel href="">[삭제]</a></td>';
             str += '   </tr> ';
             str += '   <tr> ';
             str += '      <td colspan=4 class="text-left">' + guestbookVo.content  + '</td> ';
