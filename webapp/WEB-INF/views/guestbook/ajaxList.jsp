@@ -202,6 +202,18 @@
 		});
 		
 		
+		//삭제 버튼을 클릭할때
+		$("#listArea").on("click", ".btnDel", function(){	//직접주지말고 부모한테 먹임. 그리고 btnDel에게 일시킨다.
+			console.log("삭제버튼 클릭");
+			
+			var tag = $(this);
+			console.log(tag);
+			
+			
+		});
+		
+		
+		
 		//방명록 1개씩 랜더링
 		function render(guestbookVo, type){
             var str = "";
@@ -216,7 +228,7 @@
             str += '      <td>' + guestbookVo.no  + '</td> ';
             str += '      <td>' + guestbookVo.name  + '</td>';
             str += '      <td>' + guestbookVo.regDate  + '</td>';
-            str += '      <td><a id = btndel href="">[삭제]</a></td>';
+            str += '      <td><button class = "btnDel">[삭제]</button></td>';	 //링크가 아니고 다른창을 띄울거기 때문에 a링크 사용 안함. 누르면 모달창(팝업창 같은거) 띄움
             str += '   </tr> ';
             str += '   <tr> ';
             str += '      <td colspan=4 class="text-left">' + guestbookVo.content  + '</td> ';
