@@ -112,7 +112,7 @@
 				<form method="post" action="${pageContext.request.contextPath }/gallery/upload" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<label class="form-text">글작성</label> <input id="addModalContent" type="text" name="" value="">
+							<label class="form-text">글작성</label> <input id="addModalContent" type="text" name="content" value="">
 						</div>
 						<div class="form-group">
 							<label class="form-text">이미지선택</label> <input id="file" type="file" name="file" value="">
