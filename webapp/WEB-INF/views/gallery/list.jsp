@@ -58,72 +58,18 @@
 						<ul id="viewArea">
 
 							<!-- 이미지반복영역 -->
-							<li>
-								<div class="view">
-									<img class="imgItem" src="">
-									<div class="imgWriter">
-										작성자: <strong>유재석</strong>
+							
+								<li>
+									<div class="view">
+										<img class="imgItem" src="">
+										<div class="imgWriter">
+											작성자: <strong>유재석</strong>
+										</div>
 									</div>
-								</div>
-							</li>
-							<!-- 이미지반복영역 -->
+								</li>
 							
 							<!-- 이미지반복영역 -->
-							<li>
-								<div class="view">
-									<img class="imgItem" src="">
-									<div class="imgWriter">
-										작성자: <strong>유재석</strong>
-									</div>
-								</div>
-							</li>
-							<!-- 이미지반복영역 -->
 							
-							<!-- 이미지반복영역 -->
-							<li>
-								<div class="view">
-									<img class="imgItem" src="">
-									<div class="imgWriter">
-										작성자: <strong>유재석</strong>
-									</div>
-								</div>
-							</li>
-							<!-- 이미지반복영역 -->
-							
-							
-							<!-- 이미지반복영역 -->
-							<li>
-								<div class="view">
-									<img class="imgItem" src="">
-									<div class="imgWriter">
-										작성자: <strong>유재석</strong>
-									</div>
-								</div>
-							</li>
-							<!-- 이미지반복영역 -->
-							
-							<!-- 이미지반복영역 -->
-							<li>
-								<div class="view">
-									<img class="imgItem" src="">
-									<div class="imgWriter">
-										작성자: <strong>유재석</strong>
-									</div>
-								</div>
-							</li>
-							<!-- 이미지반복영역 -->
-							
-							<!-- 이미지반복영역 -->
-							<li>
-								<div class="view">
-									<img class="imgItem" src="">
-									<div class="imgWriter">
-										작성자: <strong>유재석</strong>
-									</div>
-								</div>
-							</li>
-							<!-- 이미지반복영역 -->
-
 
 						</ul>
 					</div>
@@ -227,6 +173,39 @@
 
 
 </body>
+
+
+<script type="text/javascript">
+
+	//화면 로딩되기 직전
+	$(document).ready(function(){
+		console.log("화면 로딩 직전");
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/api/gb/add",     		
+			type : "post",
+			contentType : "application/json",
+			data : {name: ”홍길동"},
+
+
+			dataType : "json",
+			success : function(result){
+				/*성공시 처리해야될 코드 작성*/
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+
+	});
+
+
+
+</script>
+
+
+
 
 </html>
 
