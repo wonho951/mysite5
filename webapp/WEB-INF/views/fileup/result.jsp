@@ -44,7 +44,7 @@
 			<div id="file">
 				
 					<div>
-						<img id="resultImg" src="${pageContext.request.contextPath }/upload/${saveName }">	<!-- requestScope.saveName -->
+						<img id="resultImg" src="${pageContext.request.contextPath }/upload/${saveName }">	<!-- url매핑이 되어있어야함. 파일의 이름은 requestScope.saveName -->
 					</div>
 					<p>
 						<a id="btnUpload" href="${pageContext.request.contextPath }/fileupload/form"> 다시 업로드 하기 </a>
