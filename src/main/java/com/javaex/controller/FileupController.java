@@ -20,7 +20,7 @@ public class FileupController {
    //파일폼 업로드 화면
    @RequestMapping(value = "/form", method = {RequestMethod.GET, RequestMethod.POST})
    public String form() {
-      System.out.println("FileupController.form()");
+      //System.out.println("FileupController.form()");
       
       return "/fileup/form";
    }
@@ -29,7 +29,7 @@ public class FileupController {
    //파일 업로드
    @RequestMapping(value = "/upload", method = {RequestMethod.GET, RequestMethod.POST})
    public String upload(@RequestParam("file") MultipartFile file) {
-      System.out.println("FileupController.upload()");
+      //System.out.println("FileupController.upload()");
       
       //System.out.println(file.getOriginalFilename());      //실제파일명
      // System.out.println(file.getSize());               //파일사이즈
