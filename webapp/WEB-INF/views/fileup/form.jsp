@@ -26,7 +26,7 @@
 
 		<div id="container" class="clearfix">
 			<!-- 게시판 aside -->
-			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
+			<c:import url="/WEB-INF/views/includes/asideGallery.jsp"></c:import>
 			<!-- //게시판 aside -->
 
 			<div id="content">
@@ -45,7 +45,8 @@
 				<!-- //content-head -->
 
 				<div id="file">
-					<form method="post" action="" enctype="multipart/form-data">
+					<form action="${pageContext.request.contextPath }/fileup/upload"  method="post" enctype="multipart/form-data">	<!-- 첨부파일이 있으면 enctype="multipart/form-data"무조건 써줘야함 -->
+						<!-- <input type="text"> -> 이런식으로 같이 쓰기도 함 -->
 						<table>
 							<colgroup>
 								<col style="width: 600px;">
