@@ -46,11 +46,17 @@ public class GalleryController {
 		System.out.println("파일 사이즈 : " + file.getSize());
 		
 		//세션에서 유저 no 가져와서 담기
+		/*
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int user_no = authUser.getNo();
 		
 		System.out.println(user_no);
 		galleryVo.setUser_no(user_no);
+		*/
+		
+		//간단하게 할수 있는데 왜 못했을까
+		int no = ((UserVo)session.getAttribute("authUset")).getNo();
+		galleryVo.setUser_no(no);
 		
 		galleryService.upload(file, galleryVo);
 		
