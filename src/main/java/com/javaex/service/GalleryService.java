@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +28,8 @@ public class GalleryService {
 		System.out.println("[GalleryService.list]");
 		
 		List<GalleryVo> galleryList = galleryDao.getGalleryList();
+		System.out.println("GalleryService.list : " + galleryList.toString());
+		
 		
 		return galleryList;
 	}
@@ -57,6 +61,7 @@ public class GalleryService {
 		//파일 사이즈
 		long fileSize = file.getSize();
 		System.out.println("fileSize : " + fileSize);
+		
 		
 		
 		//파일 서버 하드에 저장

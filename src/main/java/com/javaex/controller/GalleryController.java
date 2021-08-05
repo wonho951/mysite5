@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +30,9 @@ public class GalleryController {
 	public String list(Model model) {
 		System.out.println("[GalleryController.list]");
 		
-		//List<GalleryVo> galleryList = galleryService.list();
+		List<GalleryVo> galleryList = galleryService.list();
 		
+		model.addAttribute("galleryList", galleryList);
 		return "/gallery/list";
 	}
 	
@@ -48,7 +51,6 @@ public class GalleryController {
 		
 		System.out.println(user_no);
 		galleryVo.setUser_no(user_no);
-		
 		
 		galleryService.upload(file, galleryVo);
 		

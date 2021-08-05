@@ -12,13 +12,16 @@ public class GalleryVo {
 	private String saveName;
 	private long fileSize;
 	
+	private String name;
 	//생성자
 	public GalleryVo() {
 		super();
 	}
 
+
+
 	public GalleryVo(int no, int user_no, String content, String filePath, String orgName, String saveName,
-			long fileSize) {
+			long fileSize, String name) {
 		super();
 		this.no = no;
 		this.user_no = user_no;
@@ -27,7 +30,10 @@ public class GalleryVo {
 		this.orgName = orgName;
 		this.saveName = saveName;
 		this.fileSize = fileSize;
+		this.name = name;
 	}
+
+
 
 	//메소드 g/s
 	public int getNo() {
@@ -85,6 +91,18 @@ public class GalleryVo {
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 
 	//메소드-일반
 	@Override

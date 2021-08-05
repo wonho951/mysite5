@@ -25,10 +25,14 @@ public class GalleryDao {
 	
 	
 	
-	//등록
+	//등록 이미지파일 업로드
 	public int insert(GalleryVo galleryVo) {
 		System.out.println("[GalleryDao.insert]");
 		
-		return sqlSession.insert("gallery.galleryInsert", galleryVo);
+		System.out.println("가기전 Dao : " + galleryVo);
+		 int count = sqlSession.insert("gallery.galleryInsert", galleryVo);
+		System.out.println("갔다온 Dao : " + galleryVo);
+		
+		return count;
 	}
 }
