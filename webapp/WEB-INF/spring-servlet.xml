@@ -62,5 +62,9 @@
 	</bean>
 
 
+	<!-- url매핑 -> 이미지 서버 하드에 보내서 브라우저창에 이미지 띄워주는거 -->
+	<mvc:resources mapping="/upload/**" location="file:C:/javaStudy/upload/" />
+
+
 </beans>
 

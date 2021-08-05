@@ -44,10 +44,10 @@
 			<div id="file">
 				
 					<div>
-						<img id="resultImg" src="${pageContext.request.contextPath }/upload/${saveName }">	<!-- url매핑이 되어있어야함. 파일의 이름은 requestScope.saveName -->
+						<img id="resultImg" src="${pageContext.request.contextPath }/upload/${saveName }">	<!-- url매핑이 되어있어야함.->서버 하드에 이미지 저장하고 그 이미지 불러와서 웹브라우저에 이미지 띄워줌. 파일의 이름은 requestScope.saveName -->
 					</div>
 					<p>
-						<a id="btnUpload" href="${pageContext.request.contextPath }/fileupload/form"> 다시 업로드 하기 </a>
+						<a id="btnUpload" href="${pageContext.request.contextPath }/fileup/form"> 다시 업로드 하기 </a>
 					</p>
 				
 			</div>
