@@ -109,13 +109,13 @@
 					<h4 class="modal-title">이미지등록</h4>
 				</div>
 
-				<form method="" action="">
+				<form method="post" action="${pageContext.request.contextPath }/gallery/upload" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="form-text">글작성</label> <input id="addModalContent" type="text" name="" value="">
 						</div>
 						<div class="form-group">
-							<label class="form-text">이미지선택</label> <input id="file" type="file" name="" value="">
+							<label class="form-text">이미지선택</label> <input id="file" type="file" name="file" value="">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -177,29 +177,19 @@
 
 <script type="text/javascript">
 
-	//화면 로딩되기 직전
-	$(document).ready(function(){
-		console.log("화면 로딩 직전");
+	//등록 클릭할 때
+	$("#btnImgUpload").on("click", function(){
+		event.preventDefault();
+		console.log("이미지 올리기 클릭")
 		
-		$.ajax({
-			
-			url : "${pageContext.request.contextPath }/api/gb/add",     		
-			type : "post",
-			contentType : "application/json",
-			data : {name: ”홍길동"},
-
-
-			dataType : "json",
-			success : function(result){
-				/*성공시 처리해야될 코드 작성*/
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
-
+		//모달창 초기화 - 없어도 초기화 되는데? 뭐지?
+		//$("addModalContent").val("");
+		//$("file").val("");
+		
+		//모달창 보이기
+		$("#addModal").modal();
+		
 	});
-
 
 
 </script>
