@@ -46,6 +46,7 @@ public class GalleryController {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int user_no = authUser.getNo();
 		
+		System.out.println(user_no);
 		galleryVo.setUser_no(user_no);
 		
 		

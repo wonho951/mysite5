@@ -50,15 +50,15 @@
 				<div id="gallery">
 					<div id="list">
 
-
+					<c:if test = "${authUser.no != null }">
 						<button id="btnImgUpload">이미지올리기</button>
 						<div class="clear"></div>
-
+					</c:if>
 
 						<ul id="viewArea">
 
 							<!-- 이미지반복영역 -->
-							
+							<c:forEach items = "">
 								<li>
 									<div class="view">
 										<img class="imgItem" src="">
@@ -67,7 +67,7 @@
 										</div>
 									</div>
 								</li>
-							
+							</c:forEach>
 							<!-- 이미지반복영역 -->
 							
 
@@ -155,7 +155,7 @@
 					</div>
 
 				</div>
-				<form method="" action="">
+				<form method="post" action="">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
