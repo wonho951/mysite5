@@ -14,12 +14,12 @@ public class FileupService {
 
    
    //파일 업로드 처리
-   public void restore(MultipartFile file) {
+   public String restore(MultipartFile file) {
       System.out.println("FileupController.restore()");
       
       /*******************파일 업로드 준비 단계****************************/
       //파일 경로가 바뀔수도 있으니 따로 빼둠
-      String saveDir = "C\\javaStudy\\upload";
+      String saveDir = "C:\\javaStudy\\upload";
       
       //System.out.println(file.getOriginalFilename());
       //System.out.println(file.getSize());
@@ -70,12 +70,12 @@ public class FileupService {
 	}
       
       
-      //2. 파일정보를 DB에 저장
+      //2. 파일정보를 DB에 저장-- 과제 알아서 해요..
       
       
       
-      
-      
+      //리턴
+      return saveName;
       
    }
    

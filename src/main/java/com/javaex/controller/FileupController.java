@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,16 +29,17 @@ public class FileupController {
    
    //파일 업로드
    @RequestMapping(value = "/upload", method = {RequestMethod.GET, RequestMethod.POST})
-   public String upload(@RequestParam("file") MultipartFile file) {
+   public String upload(Model model ,@RequestParam("file") MultipartFile file) {
       //System.out.println("FileupController.upload()");
       
       //System.out.println(file.getOriginalFilename());      //실제파일명
      // System.out.println(file.getSize());               //파일사이즈
       
-      fileupService.restore(file);
+      String saveName = fileupService.restore(file);
       
+      model.addAttribute("saveName", saveName);
       
-      return "";
+      return "/fileup/result";
    }
    
    
