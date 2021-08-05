@@ -1,5 +1,9 @@
 package com.javaex.service;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -13,14 +17,14 @@ public class FileupService {
    public void restore(MultipartFile file) {
       System.out.println("FileupController.restore()");
       
+      /*******************파일 업로드 준비 단계****************************/
       //파일 경로가 바뀔수도 있으니 따로 빼둠
       String saveDir = "C\\javaStudy\\upload";
       
       //System.out.println(file.getOriginalFilename());
       //System.out.println(file.getSize());
       
-      //파일 서버하드디스크에 저장
-      //파일정보를 db에 저장
+      
       
       //원파일 이름
       String orgName = file.getOriginalFilename();
@@ -47,12 +51,26 @@ public class FileupService {
       System.out.println("fileSize : " + fileSize);
       
       
+      /***************파일 업로드********************/
+      //1. 파일을 서버 하드디스크에 저장
+      try {
+		byte[] fileData = file.getBytes();
+		
+		//빨대작업
+		OutputStream out = new FileOutputStream(filePath);
+		BufferedOutputStream bout = new BufferedOutputStream(out);
+		
+		bout.write(fileData);
+		bout.close();
+		
+		
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       
       
-      
-      //파일을 서버 하드디스크에 저장
-      
-      
+      //2. 파일정보를 DB에 저장
       
       
       
