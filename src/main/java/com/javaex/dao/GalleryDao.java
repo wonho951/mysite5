@@ -22,4 +22,13 @@ public class GalleryDao {
 		
 		return getGalleryList;
 	}
+	
+	
+	
+	//등록
+	public int insert(GalleryVo galleryVo) {
+		System.out.println("[GalleryDao.insert]");
+		
+		return sqlSession.insert("gallery.galleryInsert", galleryVo);
+	}
 }

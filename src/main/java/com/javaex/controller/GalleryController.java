@@ -42,6 +42,7 @@ public class GalleryController {
 		System.out.println("실제 파일명 : " + file.getOriginalFilename());
 		System.out.println("파일 사이즈 : " + file.getSize());
 		
+		//세션에서 유저 no 가져와서 담기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int user_no = authUser.getNo();
 		

@@ -11,4 +11,21 @@
 		]]>
 	</select>
 	
+	
+	
+	<!-- 정보저장 -->
+	<insert id = "galleryInsert" parameterType = "GalleryVo">
+		<![CDATA[
+			insert into gallery
+			values ( seq_gallery_no.nextval
+        			,#{user_no}
+			        ,#{content}
+			        ,#{filePath}
+			        ,#{orgName}
+			        ,#{saveName}
+			        ,#{fileSize}
+			        )
+		]]>
+	</insert>
+	
 </mapper>

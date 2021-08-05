@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.GalleryDao;
 import com.javaex.vo.GalleryVo;
+import com.javaex.vo.UserVo;
 
 @Service
 public class GalleryService {
@@ -31,7 +32,7 @@ public class GalleryService {
 	
 	
 	//이미지 등록
-	public String upload(MultipartFile file, GalleryVo galleryVo) {
+	public int upload(MultipartFile file, GalleryVo galleryVo) {
 		System.out.println("[GalleryService.upload]");
 		
 		//파일 저장할 경로
@@ -58,10 +59,6 @@ public class GalleryService {
 		System.out.println("fileSize : " + fileSize);
 		
 		
-		//위의값들 Vo에 넣어줌
-		System.out.println("[GalleryService.upload] 입력 전: " + galleryVo);
-		System.out.println("[GalleryService.upload] 입력 전: " + file.getOriginalFilename());
-		
 		//파일 서버 하드에 저장
 		try {
 			byte[] fileData = file.getBytes();
@@ -77,8 +74,22 @@ public class GalleryService {
 			e.printStackTrace();
 		}
 		
+		//위의값들 Vo에 넣어줌
+		System.out.println("[GalleryService.upload] 입력 전: " + galleryVo);
+		System.out.println("[GalleryService.upload] 입력 전: " + file.getOriginalFilename());
+		
+		galleryVo.setOrgName(orgName);
+		galleryVo.setSaveName(saveName);
+		galleryVo.setFilePath(filePath);
+		galleryVo.setFileSize(fileSize);
+		
+		System.out.println("[GalleryService.upload] 입력 후 : " + galleryVo);
+		System.out.println("[GalleryService.upload] 입력 후: " + file.getOriginalFilename());
 		
 		
-		return saveName;
+		//db에 정보 저장
+		int dbInsert = galleryDao.insert(galleryVo);
+		
+		return dbInsert;
 	}
 }
