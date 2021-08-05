@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.GalleryService;
 import com.javaex.vo.GalleryVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/gallery")
@@ -40,6 +41,12 @@ public class GalleryController {
 		
 		System.out.println("실제 파일명 : " + file.getOriginalFilename());
 		System.out.println("파일 사이즈 : " + file.getSize());
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getNo();
+		
+		galleryVo.setUser_no(user_no);
+		
 		
 		galleryService.upload(file, galleryVo);
 		
