@@ -354,6 +354,21 @@
             
 		}
 		
+		
+		
+		/*보이기 숨기기 예제*/
+		${"#btnhide"}.on("click", function(){
+			console.log("숨기기 버튼 클릭");
+			
+			$("#btnSubmit").hide();
+		});
+		
+		
+		$("#btnshow").on("click",function(){
+			console.log("보이기 버튼 클릭");
+			
+			$("#btnSubmit").show();
+		});
 	
 	</script>
 
