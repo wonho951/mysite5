@@ -19,8 +19,11 @@ public class BoardDao {
 	//2021.08.06
 	//게시판 페이징 연습용 리스트
 	public List<BoardVo> selectList2(){
-		System.out.println("BoardDao.selectList2[]");
+		System.out.println("[BoardDao.selectList2()]");
 		
+		//데이터 안넘어 오는거 같으면 확인용
+		//List<BoardVo> boardList = sqlSession.selectList("board.selectList2");
+		//System.out.println(boardList);
 		
 		return sqlSession.selectList("board.selectList2");
 	};

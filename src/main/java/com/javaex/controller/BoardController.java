@@ -31,7 +31,7 @@ public class BoardController {
 		
 		//리스트 가져오기
 		List<BoardVo> boardList = boardService.getList2();
-		
+		System.out.println(boardList);
 		
 		
 		return "board/list2";
