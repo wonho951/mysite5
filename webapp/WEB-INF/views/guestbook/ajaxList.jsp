@@ -73,6 +73,9 @@
 									</td>
 								</tr>
 							</tbody>
+							
+							<button id = "btnshow" type = "button">보이기</button>
+							<button id = "btnhide" type = "button">숨기기</button>
 
 						</table>
 						<!-- //guestWrite -->
