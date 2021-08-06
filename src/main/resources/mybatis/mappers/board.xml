@@ -5,11 +5,15 @@
 
 
 	<!-- //전체 게시물 갯수 구하기 -->
-	<select id = "selectTotalCnt" resultType = "int">
+	<select id = "selectTotalCnt" parameterType = "String" resultType = "int">
 		<![CDATA[
 			select count(*)
-			from board
+			from board b, users u
+			where b.user_no = u.no
 		]]>
+		<if test = "_parameter != null and _parameter != '' ">
+			and b.title like '%'|| #{keyword} ||'%'
+		</if>
 	</select>
 
 

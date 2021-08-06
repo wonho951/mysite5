@@ -18,11 +18,11 @@ public class BoardDao {
 	
 	
 	//전체 게시물 갯수 구하기
-	public int selectTotalCnt() {
+	public int selectTotalCnt(String keyword) {
 		System.out.println("[BoardDao.selectTotalCnt()]");
 		
 		//전체 갯수인 숫자만 필요하니 셀렉원 사용
-		return sqlSession.selectOne("board.selectTotalCnt");
+		return sqlSession.selectOne("board.selectTotalCnt", keyword);
 	}
 	
 	

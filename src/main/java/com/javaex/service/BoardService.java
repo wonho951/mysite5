@@ -59,7 +59,7 @@ public class BoardService {
 		///////////////////////////
 		
 		//전체 글 갯수
-		int totalCount = boardDao.selectTotalCnt();
+		int totalCount = boardDao.selectTotalCnt(keyword);
 		//전체갯수 찍어보기
 		//System.out.println(totalCount);
 		
