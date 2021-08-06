@@ -19,9 +19,9 @@ public class BoardService {
 	
 	//2021.08.06
 	//게시판 페이징 연습용 리스트
-	public Map<String, Object> getList2(int crtPage){
+	public Map<String, Object> getList2(int crtPage, String keyword){
 		System.out.println("[BoardService.getList2]");
-		System.out.println(crtPage);
+		//System.out.println(crtPage);
 		
 		
 		
@@ -51,7 +51,7 @@ public class BoardService {
 		int endRnum = (startRnum+listCnt)-1;	//startRnum*listCnt
 		
 		//()안에 페이징의 시작번호 끝번호를 줘야함
-		List<BoardVo> boardList = boardDao.selectList2(startRnum, endRnum);
+		List<BoardVo> boardList = boardDao.selectList2(startRnum, endRnum, keyword);
 		
 		
 		////////////////////////////
@@ -61,7 +61,7 @@ public class BoardService {
 		//전체 글 갯수
 		int totalCount = boardDao.selectTotalCnt();
 		//전체갯수 찍어보기
-		System.out.println(totalCount);
+		//System.out.println(totalCount);
 		
 		
 		//페이지당 버튼 갯수 -> 버튼 몇개씩 보여줄거냐

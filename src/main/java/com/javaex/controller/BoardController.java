@@ -34,7 +34,7 @@ public class BoardController {
 		//System.out.println(crtPage);
 		
 		//리스트 가져오기
-		Map<String, Object> listMap = boardService.getList2(crtPage);
+		Map<String, Object> listMap = boardService.getList2(crtPage, keyword);
 		System.out.println(listMap);
 		
 		

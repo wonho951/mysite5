@@ -28,20 +28,21 @@ public class BoardDao {
 	
 	//2021.08.06
 	//게시판 페이징 연습용 리스트
-	public List<BoardVo> selectList2(int startRnum, int endRnum){
+	public List<BoardVo> selectList2(int startRnum, int endRnum, String keyword){
 		System.out.println("[BoardDao.selectList2()]");
 		
 		//데이터 안넘어 오는거 같으면 확인용
 		//List<BoardVo> boardList = sqlSession.selectList("board.selectList2");
 		//System.out.println(boardList);
 		
-		System.out.println(startRnum);
-		System.out.println(endRnum);
+		//System.out.println(startRnum);
+		//System.out.println(endRnum);
 		
-		Map<String, Integer> pMap = new HashMap<String, Integer>();
+		Map<String, Object> pMap = new HashMap<String, Object>();
 		
 		pMap.put("startRnum", startRnum);
 		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
 		System.out.println(pMap);
 		
 		return sqlSession.selectList("board.selectList2", pMap);

@@ -41,6 +41,11 @@
 			                    ,u.name
 			            from board b, users u
 			            where b.user_no = u.no
+		]]>        
+					<if test = "keyword != null and keyword != '' ">
+						 and b.title like '%'|| #{keyword} ||'%'
+					</if>
+		<![CDATA[	            
 			            order by b.no desc)ot)rt
 			where rn >= #{startRnum}
 			and rn <= #{endRnum}
