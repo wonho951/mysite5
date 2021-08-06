@@ -80,17 +80,26 @@
 
 						<div id="paging">
 							<ul>
-								<li><a href="">◀</a></li>
+								<c:if test = "${listMap.prev == true}">	<!-- 괄호 주의 -->
+									<li><a href="${pageContext.request.contextPath}/board/list2?crtPage=${listMap.startPageBtnNo-1}">◀</a></li>
+								</c:if>
 								
 								<!-- 반복문으로 돌림 -->
+								<!-- for문 안에 세트는 사이에 주석 넣지 말기 -->
 								<c:forEach begin = "${listMap.startPageBtnNo}" end = "${listMap.endPageBtnNo}" step = "1" var = "page"> <!-- var은 시작 페이지 변수명 만들면됨 -->
-									
-									<li><a href="">${page }</a></li>
-									
+									<c:choose>
+										<c:when test = "${param.crtPage eq page}">
+											<li class = "active"><a href="${pageContext.request.contextPath}/board/list2?crtPage=${page}">${page }</a></li>
+										</c:when>
+										<c:otherwise>
+										<li><a href="${pageContext.request.contextPath}/board/list2?crtPage=${page}">${page }</a></li>
+										</c:otherwise>
+									</c:choose>
 								</c:forEach>
 								
-								
-								<li><a href="">▶</a></li>
+								<c:if test = "${listMap.next == true}">
+									<li><a href="${pageContext.request.contextPath}/board/list2?crtPage=${listMap.endPageBtnNo+1}">▶</a></li>
+								</c:if>
 							</ul>
 
 

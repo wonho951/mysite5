@@ -96,7 +96,14 @@ public class BoardService {
 		boolean next = false;
 		if((endPageBtnNo * listCnt) < totalCount) {
 			next = true;
+		} else {
+			endPageBtnNo =  totalCount/(double)listCnt
 		}
+		
+		
+		//127개 /10.0 페이지 --> 12.7:버림처리해서 -> 12로 계산 -> 120 + 7 -> 13페이지까지 나와야함
+		
+		
 		
 		
 		//이전 화살표 표현 유무
