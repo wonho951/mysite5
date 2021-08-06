@@ -28,13 +28,14 @@ public class BoardController {
 	//게시판 페이징 연습용 리스트
 	@RequestMapping(value = "/list2", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list2(Model model, 
-						@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+						@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+						@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		System.out.println("[BoardController.list2()]");
 		//System.out.println(crtPage);
 		
 		//리스트 가져오기
 		Map<String, Object> listMap = boardService.getList2(crtPage);
-		//System.out.println(listMap);
+		System.out.println(listMap);
 		
 		
 		//잘 넘어왔는지 확인용

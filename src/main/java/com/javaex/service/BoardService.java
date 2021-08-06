@@ -97,8 +97,11 @@ public class BoardService {
 		if((endPageBtnNo * listCnt) < totalCount) {
 			next = true;
 		} else {
-			endPageBtnNo =  totalCount/(double)listCnt
-		}
+			//다음 화살표 버튼이 없을때 endPageBtnNo을 다시 계산해야 한다.
+			//전체 글 갯수(127개) / 한페이지의 갯수(10개) -> 사람이 계산하면 12.7이 나오지만 자바가 계산하면 12로 나옴
+			//우리가 필요한 숫자는 13임. 그래서 형변환 한 후에 올림처리함. 그리고 다시 정수형으로 형변환 시킴
+			endPageBtnNo = (int)Math.ceil(totalCount / (double)listCnt);
+		}								//127개     / 10.0  -> 12.7 -> 올림처리함.->13
 		
 		
 		//127개 /10.0 페이지 --> 12.7:버림처리해서 -> 12로 계산 -> 120 + 7 -> 13페이지까지 나와야함
