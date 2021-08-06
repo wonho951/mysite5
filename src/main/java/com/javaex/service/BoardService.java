@@ -40,7 +40,7 @@ public class BoardService {
 		}*/
 		
 		//삼항연산자
-		//값 ? : 값 : 값 -> dnldp for문이랑 같음
+		//값 ? : 값 : 값 -> 위에 for문이랑 같음
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
 		
 		//시작번호 계산하기
