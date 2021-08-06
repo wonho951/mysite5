@@ -4,6 +4,17 @@
 <mapper namespace="board">
 
 
+	<!-- //전체 게시물 갯수 구하기 -->
+	<select id = "selectTotalCnt" resultType = "int">
+		<![CDATA[
+			select count(*)
+			from board
+		]]>
+	</select>
+
+
+
+
 	<!-- 2021.08.06
 	게시판 페이징 연습용 리스트 -->
 	<select id = "selectList2" parameterType = "map" resultType = "BoardVo">
