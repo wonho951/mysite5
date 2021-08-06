@@ -1,15 +1,14 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.BoardDao;
 import com.javaex.vo.BoardVo;
-import com.javaex.vo.UserVo;
 
 @Service
 public class BoardService {
@@ -20,11 +19,14 @@ public class BoardService {
 	
 	//2021.08.06
 	//게시판 페이징 연습용 리스트
-	public List<BoardVo> getList2(int crtPage){
+	public Map<String, Object> getList2(int crtPage){
 		System.out.println("[BoardService.getList2]");
 		System.out.println(crtPage);
+		
+		
+		
 		////////////////////////////
-		////리스트 가져오기 -> 최종목표는 리스트 가져오는거
+		////리스트 가져오기 -> 최종목표는 리스트 가져오는거 -> 전체 다 가져오는거 아님. 특정 갯수만 가져옴.
 		///////////////////////////
 		
 		//미리 정의		
@@ -85,7 +87,47 @@ public class BoardService {
 							//1/5.0 -> 0.8 ->올림	 1.0		1.0*5->5.0
 							//1/5.0 -> 1.0 ->올림	 1.0		1.0*5->5.0
 		
-		return boardList;
+		
+		//시작 버튼 번호
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount - 1);
+							//10		  -    4 -> 6
+		
+		//다음 화살표 표현 유무
+		boolean next = false;
+		if((endPageBtnNo * listCnt) < totalCount) {
+			next = true;
+		}
+		
+		
+		//이전 화살표 표현 유무
+		boolean prev = false;
+		if(startPageBtnNo != 1) {
+			prev = true;
+		}
+		
+		
+		
+		
+		////////////////////////////
+		////Map로 리턴하기
+		///////////////////////////
+		
+		
+		//4개를 다 보내려면 map 또는 vo를 만든다.
+		   //↓
+		//리턴하기 (map)사용	->	사실상 순서는 상관없긴함.
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		listMap.put("boardList", boardList);
+		listMap.put("prev", prev);			//prev는 boolean형
+		listMap.put("startPageBtnNo", startPageBtnNo);
+		listMap.put("endPageBtnNo", endPageBtnNo);
+		listMap.put("next", next);
+		
+		
+		
+		
+		
+		return listMap;
 	};
 	
 	
