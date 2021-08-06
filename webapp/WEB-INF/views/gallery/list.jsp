@@ -157,8 +157,10 @@
 				</div>
 				<form method="post" action="">
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+						<c:if test = "${authUser.no != null }">
+							<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+						</c:if>
 					</div>
 
 
