@@ -192,6 +192,13 @@
 		$("#addModal").modal();
 		
 	});
+	
+	
+	//이미지 클릭할때
+	$("#viewArea").on("click", "li", function(){
+		console.log("이미지 클릭")
+		
+	});
 
 
 </script>
