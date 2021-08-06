@@ -18,6 +18,32 @@ public class BoardService {
 	private BoardDao boardDao;
 	
 	
+	//2021.08.06
+	//게시판 페이징 연습용 리스트
+	public List<BoardVo> getList2(){
+		System.out.println("[BoardService.getList2]");
+		
+		List<BoardVo> boardList = boardDao.selectList2();
+		
+		return boardList;
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//게시판 정보가져오기
 	public BoardVo getBoard(int no) {
 		System.out.println("[BoardService.getBoard]");

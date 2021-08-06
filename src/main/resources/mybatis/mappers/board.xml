@@ -4,6 +4,39 @@
 <mapper namespace="board">
 
 
+	<!-- 2021.08.06
+	게시판 페이징 연습용 리스트 -->
+	<select id = "selectList2">
+		<![CDATA[
+			select   b.no
+			        ,b.title
+			        ,b.hit
+			        ,b.reg_date regDate
+			        ,b.user_no userNo
+			        ,u.name
+			from board b, users u
+			where b.user_no = u.no
+		]]>
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!-- 조회수올리기(글읽기) -->
 	<update id="updateHit" parameterType="int">
 		<![CDATA[

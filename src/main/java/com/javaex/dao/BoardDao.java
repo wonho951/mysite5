@@ -14,6 +14,32 @@ public class BoardDao {
 	@Autowired
 	private SqlSession sqlSession;	//얘는 DB관련 HTTPSession은 메모리에 올라가는애
 	
+	
+	
+	//2021.08.06
+	//게시판 페이징 연습용 리스트
+	public List<BoardVo> selectList2(){
+		System.out.println("BoardDao.selectList2[]");
+		
+		
+		return sqlSession.selectList("board.selectList2");
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//조회수 올리기
 	public int updateHit(int no) {
 		System.out.println("BoardDao.updateHit[]");

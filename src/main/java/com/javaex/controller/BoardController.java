@@ -24,6 +24,22 @@ public class BoardController {
 	private BoardService boardService;
 	
 	
+	//게시판 페이징 연습용 리스트
+	@RequestMapping(value = "/list2", method = {RequestMethod.GET, RequestMethod.POST})
+	public String list2() {
+		System.out.println("[BoardController.list2()]");
+		
+		//리스트 가져오기
+		List<BoardVo> boardList = boardService.getList2();
+		
+		
+		
+		return "board/list2";
+	};
+	
+	
+	
+	
 	//글읽기
 	@RequestMapping(value = "/read", method = {RequestMethod.GET, RequestMethod.POST})
 	public String read(Model model, @RequestParam("no") int no) {
