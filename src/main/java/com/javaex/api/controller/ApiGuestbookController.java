@@ -19,7 +19,7 @@ public class ApiGuestbookController {
 	@Autowired
 	private GuestbookService guestService;
 	
-	/*
+	
 	//ajax방식으로 리스트 가져오기
 	@ResponseBody	//리턴에 보낸 리턴값을 ResponseBody에 보내라
 	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
@@ -65,7 +65,7 @@ public class ApiGuestbookController {
 	}
 	
 	/***************************************************/
-	
+	/*
 	//ajax방식으로 리스트 가져오기
 	@ResponseBody	//리턴에 보낸 리턴값을 ResponseBody에 보내라
 	@RequestMapping(value = "/list2", method = {RequestMethod.GET, RequestMethod.POST})
@@ -108,5 +108,5 @@ public class ApiGuestbookController {
 		
 		
 		return count;
-	}
+	}*/
 }

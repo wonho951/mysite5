@@ -353,14 +353,13 @@
             } else {
             	console.log("방향을 지정해 주세요");
             }
-            
-            
-		}
+		};
 		
 		
 		
-		/*보이기 숨기기 예제*/
-		${"#btnhide"}.on("click", function(){
+ 		/*보이기 숨기기 예제*/
+		/*
+ 		${"#btnhide"}.on("click", function(){
 			console.log("숨기기 버튼 클릭");
 			
 			$("#btnSubmit").hide();
@@ -371,13 +370,8 @@
 			console.log("보이기 버튼 클릭");
 			
 			$("#btnSubmit").show();
-		});
+		}); */
 	
 	</script>
-
-
-
-
-
 
 </html>
