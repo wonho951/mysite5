@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +20,23 @@ public class BoardDao {
 	
 	//2021.08.06
 	//게시판 페이징 연습용 리스트
-	public List<BoardVo> selectList2(){
+	public List<BoardVo> selectList2(int startRnum, int endRnum){
 		System.out.println("[BoardDao.selectList2()]");
 		
 		//데이터 안넘어 오는거 같으면 확인용
 		//List<BoardVo> boardList = sqlSession.selectList("board.selectList2");
 		//System.out.println(boardList);
 		
-		return sqlSession.selectList("board.selectList2");
+		System.out.println(startRnum);
+		System.out.println(endRnum);
+		
+		Map<String, Integer> pMap = new HashMap<String, Integer>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("board.selectList2", pMap);
 	};
 	
 	

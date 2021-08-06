@@ -20,10 +20,36 @@ public class BoardService {
 	
 	//2021.08.06
 	//게시판 페이징 연습용 리스트
-	public List<BoardVo> getList2(){
+	public List<BoardVo> getList2(int crtPage){
 		System.out.println("[BoardService.getList2]");
+		System.out.println(crtPage);
+		////////////////////////////
+		////리스트 가져오기 -> 최종목표는 리스트 가져오는거
+		///////////////////////////
 		
-		List<BoardVo> boardList = boardDao.selectList2();
+		//미리 정의		
+		int listCnt = 10;
+		
+		/*
+		//crtPage rPtks(-값일때 1page 처리)
+		if(crtPage > 0) {
+			//굳이 건드릴 필요가 없음.
+			//crtPage = crtPage;
+		} else {
+			crtPage = 1;
+		}*/
+		
+		//삼항연산자
+		//값 ? : 값 : 값 -> dnldp for문이랑 같음
+		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
+		
+		//시작번호 계산하기
+		int startRnum = (crtPage-1)*listCnt+1;
+		//끝번호 계산하기
+		int endRnum = (startRnum+listCnt)-1;	//startRnum*listCnt
+		
+		//()안에 페이징의 시작번호 끝번호를 줘야함
+		List<BoardVo> boardList = boardDao.selectList2(startRnum, endRnum);
 		
 		return boardList;
 	};
