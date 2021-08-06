@@ -57,7 +57,7 @@
 								</tr>
 							</thead>
 							
-							<c:forEach items = "${boardList}" var = "boardList">
+							<c:forEach items = "${requestScope.listMap.boardList}" var = "boardList">
 								<tbody>
 									<tr>
 										<td>${boardList.no }</td>
@@ -81,16 +81,15 @@
 						<div id="paging">
 							<ul>
 								<li><a href="">◀</a></li>
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li class="active"><a href="">5</a></li>
-								<li><a href="">6</a></li>
-								<li><a href="">7</a></li>
-								<li><a href="">8</a></li>
-								<li><a href="">9</a></li>
-								<li><a href="">10</a></li>
+								
+								<!-- 반복문으로 돌림 -->
+								<c:forEach begin = "${listMap.startPageBtnNo}" end = "${listMap.endPageBtnNo}" step = "1" var = "page"> <!-- var은 시작 페이지 변수명 만들면됨 -->
+									
+									<li><a href="">${page }</a></li>
+									
+								</c:forEach>
+								
+								
 								<li><a href="">▶</a></li>
 							</ul>
 

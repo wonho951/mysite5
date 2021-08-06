@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -32,13 +33,17 @@ public class BoardController {
 		//System.out.println(crtPage);
 		
 		//리스트 가져오기
-		List<BoardVo> boardList = boardService.getList2(crtPage);
+		Map<String, Object> listMap = boardService.getList2(crtPage);
+		//System.out.println(listMap);
+		
+		
 		//잘 넘어왔는지 확인용
 		//System.out.println(boardList);
 		
 		//가져온거 담기
-		model.addAttribute("boardList", boardList);
+		//model.addAttribute("boardList", boardList); -> 기존꺼
 		
+		model.addAttribute("listMap", listMap);	//->맵으로 바꾼다음
 		return "board/list2";
 	};
 	
