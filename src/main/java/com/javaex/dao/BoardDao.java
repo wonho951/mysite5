@@ -17,6 +17,14 @@ public class BoardDao {
 	private SqlSession sqlSession;	//얘는 DB관련 HTTPSession은 메모리에 올라가는애
 	
 	
+	//전체 게시물 갯수 구하기
+	public int selectTotalCnt() {
+		System.out.println("[BoardDao.selectTotalCnt()]");
+		
+		//전체 갯수인 숫자만 필요하니 셀렉원 사용
+		return sqlSession.selectOne("board.selectTotalCnt");
+	}
+	
 	
 	//2021.08.06
 	//게시판 페이징 연습용 리스트

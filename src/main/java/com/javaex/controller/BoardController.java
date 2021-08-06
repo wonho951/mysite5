@@ -34,7 +34,7 @@ public class BoardController {
 		//리스트 가져오기
 		List<BoardVo> boardList = boardService.getList2(crtPage);
 		//잘 넘어왔는지 확인용
-		System.out.println(boardList);
+		//System.out.println(boardList);
 		
 		//가져온거 담기
 		model.addAttribute("boardList", boardList);

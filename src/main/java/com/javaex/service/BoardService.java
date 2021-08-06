@@ -40,7 +40,7 @@ public class BoardService {
 		}*/
 		
 		//삼항연산자
-		//값 ? : 값 : 값 -> 위에 for문이랑 같음
+		//값 ? 값 : 값 -> 위에 for문이랑 같음
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
 		
 		//시작번호 계산하기
@@ -50,6 +50,16 @@ public class BoardService {
 		
 		//()안에 페이징의 시작번호 끝번호를 줘야함
 		List<BoardVo> boardList = boardDao.selectList2(startRnum, endRnum);
+		
+		
+		////////////////////////////
+		////페이징 계산 (밑에 12345)
+		///////////////////////////
+		
+		//전체 글 갯수
+		int totalCount = boardDao.selectTotalCnt();
+		
+		
 		
 		return boardList;
 	};
