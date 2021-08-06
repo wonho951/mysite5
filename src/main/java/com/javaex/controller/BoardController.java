@@ -26,13 +26,16 @@ public class BoardController {
 	
 	//게시판 페이징 연습용 리스트
 	@RequestMapping(value = "/list2", method = {RequestMethod.GET, RequestMethod.POST})
-	public String list2() {
+	public String list2(Model model) {
 		System.out.println("[BoardController.list2()]");
 		
 		//리스트 가져오기
 		List<BoardVo> boardList = boardService.getList2();
+		//잘 넘어왔는지 확인용
 		System.out.println(boardList);
 		
+		//가져온거 담기
+		model.addAttribute("boardList", boardList);
 		
 		return "board/list2";
 	};

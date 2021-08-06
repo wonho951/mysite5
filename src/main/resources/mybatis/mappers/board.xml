@@ -8,14 +8,31 @@
 	게시판 페이징 연습용 리스트 -->
 	<select id = "selectList2" resultType = "BoardVo">
 		<![CDATA[
-			select   b.no
-			        ,b.title
-			        ,b.hit
-			        ,b.reg_date regDate
-			        ,b.user_no userNo
-			        ,u.name
-			from board b, users u
-			where b.user_no = u.no
+			select   rt.rn
+			        ,rt.no
+			        ,rt.title
+			        ,rt.hit
+			        ,rt.regDate
+			        ,rt.userNo
+			        ,rt.name
+			from (select   rownum rn
+			              ,ot.no
+			              ,ot.title
+			              ,ot.hit
+			              ,ot.regDate
+			              ,ot.userNo
+			              ,ot.name
+			      from (select   b.no
+			                    ,b.title
+			                    ,b.hit
+			                    ,b.reg_date regDate
+			                    ,b.user_no userNo
+			                    ,u.name
+			            from board b, users u
+			            where b.user_no = u.no
+			            order by b.no desc)ot)rt
+			where rn >= 21
+			and rn <= 30
 		]]>
 	</select>
 

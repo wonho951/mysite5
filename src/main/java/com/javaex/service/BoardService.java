@@ -80,7 +80,16 @@ public class BoardService {
 		System.out.println(boardVo);
 		
 		
-		return boardDao.insert(boardVo);
+		//페이징 때문에 일부러 많이 등록함.
+		for(int i = 0; i < 127; i++) {
+			boardVo.setTitle(i + "번째 제목입니다.");
+			boardVo.setContent(i + "번째 내용입니다.");
+			boardDao.insert(boardVo);
+		}
+		
+		
+		return 1;
+		//return boardDao.insert(boardVo);
 		
 	}
 	
