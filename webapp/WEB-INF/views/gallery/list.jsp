@@ -59,7 +59,7 @@
 
 							<!-- 이미지반복영역 -->
 							<c:forEach items = "${galleryList}" var = "galleryVo">
-								<li>
+								<li data-no = "${galleryVo.no }">
 									<div class="view">
 										<img class="imgItem" src="${pageContext.request.contextPath }/upload/${galleryVo.saveName}">
 										<div class="imgWriter">
@@ -143,7 +143,7 @@
 				<div class="modal-body">
 
 					<div class="formgroup">
-						<img id="viewModelImg" src="${pageContext.request.contextPath }/upload/${saveName}">
+						<img id="viewModelImg" src="">
 						<!-- ajax로 처리 : 이미지출력 위치-->
 					</div>
 
@@ -195,8 +195,29 @@
 	$("#viewArea").on("click", "li", function(){
 		console.log("이미지 클릭")
 
-		var no = $(this).date("no");
+		var no = $(this).data("no");	
 		console.log(no);
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/api/gallery/read",     		
+			type : "post",
+			//contentType : "application/json",
+			data : {no: "no"},
+
+
+			dataType : "json",
+			success : function(galleryVo){
+				/*성공시 처리해야될 코드 작성*/
+				console.log("vo받기")
+				console.log(galleryVo)
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+
 		
 		
 
