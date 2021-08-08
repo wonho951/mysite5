@@ -156,7 +156,7 @@
 					<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						<c:if test = "${authUser != null }">
-							<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+							<button type="button" class="btn btn-danger" id="btnDel" data-authuserno = "${authUser.no }">삭제</button>
 						</c:if>
 					</div>
 
@@ -212,10 +212,35 @@
 				console.log("vo받기");
 				console.log(galleryVo);
 				
+				//이미지 보여주기
 				$("#viewModelImg").attr("src", "${pageContext.request.contextPath }/upload/" + galleryVo.saveName)
 				
-				
+				//컨텐츠 보여주기
 				$("#viedModelContent").text(galleryVo.content);
+				
+			
+				//삭제버튼 숨김 or 보이기 -> 삭제 버튼에 data주는 방법
+				var userNo = galleryVo.userNo;
+				/*
+				var authUserNo = $("#btnDel").data("authuserno");
+				
+				
+				if(userNo != authUserNo) {
+					console.log("삭제버튼 숨김")
+					$("#btnDel").hide();
+				} else {
+					console.log("삭제버튼 보임")
+					$("#btnDel").show();
+				}*/
+				
+				//삭제버튼 보이기 숨기기 - 세션스코프 유저넘버 가져와도 됨.
+				if(userNo != "${authUser.no}"){
+					console.log("삭제버튼 숨김")
+					$("#btnDel").hide();
+				} else {
+					console.log("삭제버튼 보임")
+					$("#btnDel").show();
+				}	
 				
 				
 			},

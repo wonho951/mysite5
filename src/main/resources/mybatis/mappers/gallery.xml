@@ -7,7 +7,7 @@
 	<select id = "galleryList" resultType = "GalleryVo">
 		<![CDATA[
 			select   g.no
-			        ,g.user_no
+			        ,g.user_no userNo
 			        ,g.content
 			        ,g.filePath        
 			        ,g.orgName
@@ -27,7 +27,7 @@
 		<![CDATA[
 			insert into gallery
 			values ( seq_gallery_no.nextval
-        			,#{user_no}
+        			,#{userNo}
 			        ,#{content}
 			        ,#{filePath}
 			        ,#{orgName}
@@ -42,7 +42,7 @@
 	<select id = "selectOne" parameterType = "int" resultType = "GalleryVo">
 		<![CDATA[
 			select   g.no
-			        ,g.user_no
+			        ,g.user_no userNo
 			        ,g.content
 			        ,g.filepath
 			        ,g.orgname

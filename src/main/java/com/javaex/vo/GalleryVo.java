@@ -5,7 +5,7 @@ public class GalleryVo {
 	
 	//필드
 	private int no;
-	private int user_no;
+	private int userNo;
 	private String content;
 	private String filePath;
 	private String orgName;
@@ -18,13 +18,11 @@ public class GalleryVo {
 		super();
 	}
 
-
-
-	public GalleryVo(int no, int user_no, String content, String filePath, String orgName, String saveName,
+	public GalleryVo(int no, int userNo, String content, String filePath, String orgName, String saveName,
 			long fileSize, String name) {
 		super();
 		this.no = no;
-		this.user_no = user_no;
+		this.userNo = userNo;
 		this.content = content;
 		this.filePath = filePath;
 		this.orgName = orgName;
@@ -32,7 +30,6 @@ public class GalleryVo {
 		this.fileSize = fileSize;
 		this.name = name;
 	}
-
 
 
 	//메소드 g/s
@@ -44,13 +41,6 @@ public class GalleryVo {
 		this.no = no;
 	}
 
-	public int getUser_no() {
-		return user_no;
-	}
-
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
-	}
 
 	public String getContent() {
 		return content;
@@ -94,6 +84,14 @@ public class GalleryVo {
 	
 	
 
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -104,13 +102,14 @@ public class GalleryVo {
 
 
 
+
+
 	//메소드-일반
 	@Override
 	public String toString() {
-		return "GalleryVo [no=" + no + ", user_no=" + user_no + ", content=" + content + ", filePath=" + filePath
-				+ ", orgName=" + orgName + ", saveName=" + saveName + ", fileSize=" + fileSize + "]";
+		return "GalleryVo [no=" + no + ", userNo=" + userNo + ", content=" + content + ", filePath=" + filePath
+				+ ", orgName=" + orgName + ", saveName=" + saveName + ", fileSize=" + fileSize + ", name=" + name + "]";
 	}
-	
 	
 	
 	

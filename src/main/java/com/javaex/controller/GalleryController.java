@@ -55,8 +55,8 @@ public class GalleryController {
 		*/
 		
 		//간단하게 할수 있는데 왜 못했을까
-		int user_no = ((UserVo)session.getAttribute("authUser")).getNo();
-		galleryVo.setUser_no(user_no);
+		int userNo = ((UserVo)session.getAttribute("authUser")).getNo();
+		galleryVo.setUserNo(userNo);
 		
 		galleryService.upload(file, galleryVo);
 		
