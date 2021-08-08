@@ -59,7 +59,7 @@
 
 							<!-- 이미지반복영역 -->
 							<c:forEach items = "${galleryList}" var = "galleryVo">
-								<li data-no = "${galleryVo.no }">
+								<li id = "listDelete" data-no = "${galleryVo.no }">
 									<div class="view">
 										<img class="imgItem" src="${pageContext.request.contextPath }/upload/${galleryVo.saveName}">
 										<div class="imgWriter">
@@ -157,6 +157,7 @@
 							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						<c:if test = "${authUser != null }">
 							<button type="button" class="btn btn-danger" id="btnDel" data-authuserno = "${authUser.no }">삭제</button>
+							
 						</c:if>
 					</div>
 
@@ -216,8 +217,10 @@
 				$("#viewModelImg").attr("src", "${pageContext.request.contextPath }/upload/" + galleryVo.saveName)
 				
 				//컨텐츠 보여주기
-				$("#viedModelContent").text(galleryVo.content);
+				$("#viewModelContent").text(galleryVo.content);
 				
+				//삭제 버튼 눌렀을때 no값 넘겨야함.
+				$("#btnDel").val(no);
 			
 				//삭제버튼 숨김 or 보이기 -> 삭제 버튼에 data주는 방법
 				var userNo = galleryVo.userNo;
@@ -254,6 +257,46 @@
 	});
 
 
+	
+	//삭제 클릭시 삭제하기
+	$("#btnDel").on("click", function(){
+		console.log("로긴 한 사람만 보임")
+		
+		var no = $("#btnDel").val();
+		console.log(no);
+		
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/api/gallery/delete",     		
+			type : "post",
+			contentType : "application/json",
+			data : {no : no},
+
+
+			dataType : "json",
+			success : function(count){
+				/*성공시 처리해야될 코드 작성*/
+				
+				//리스트에서 지우기
+				$("#listDelete").remove();
+				
+				//삭제 후 모달창 닫기
+				
+				
+				
+				
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+
+	});
+	
+	
+	
 </script>
 
 
