@@ -146,7 +146,7 @@
 				<div class="modal-body">
 
 					<div class="formgroup">
-						<img id="viewModelImg" src="">
+						<img id="viewModelImg" src="${pageContext.request.contextPath }/gallery/read/${galleryVo.save.name}">
 						<!-- ajax로 처리 : 이미지출력 위치-->
 					</div>
 
@@ -184,9 +184,9 @@
 		event.preventDefault();
 		console.log("이미지 올리기 클릭")
 		
-		//모달창 초기화 - 없어도 초기화 되는데? 뭐지?
-		//$("addModalContent").val("");
-		//$("file").val("");
+		//모달창 초기화
+		$("addModalContent").val("");
+		$("file").val("");
 		
 		//모달창 보이기
 		$("#addModal").modal();
@@ -198,6 +198,12 @@
 	$("#viewArea").on("click", "li", function(){
 		console.log("이미지 클릭")
 		
+
+
+		
+		
+		
+		$("#viewArea").modal();
 	});
 
 

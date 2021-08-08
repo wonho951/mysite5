@@ -97,4 +97,14 @@ public class GalleryService {
 		
 		return dbInsert;
 	}
+	
+	
+	
+	//이미지 읽어오기
+	public int read() {
+		System.out.println("[GalleryService.read()]");
+		
+		return 1;
+	}
+	
 }
