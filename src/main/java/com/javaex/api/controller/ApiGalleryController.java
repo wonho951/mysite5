@@ -11,7 +11,7 @@ import com.javaex.service.GalleryService;
 import com.javaex.vo.GalleryVo;
 
 @Controller
-@RequestMapping(value = "api/gallery")
+@RequestMapping(value = "/api/gallery")
 public class ApiGalleryController {
 
 	@Autowired
@@ -27,7 +27,7 @@ public class ApiGalleryController {
 		GalleryVo galleryVo = galleryService.read(no);
 		
 		
-		return null;
+		return galleryVo;
 	}
 	
 }

@@ -152,7 +152,7 @@
 					</div>
 
 				</div>
-				<form method="post" action="">
+				<form method="" action="">
 					<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						<c:if test = "${authUser != null }">
@@ -203,7 +203,7 @@
 			url : "${pageContext.request.contextPath }/api/gallery/read",     		
 			type : "post",
 			//contentType : "application/json",
-			data : {no: "no"},
+			data : {no: no},	//no는 int형이니까 ""사용 하지 말자... ppt복사 붙여넣기 해도 실수좀 제발..
 
 
 			dataType : "json",
@@ -212,13 +212,10 @@
 				console.log("vo받기");
 				console.log(galleryVo);
 				
-				$("#viewModelImg").attr("src", "${pageContext.request.contextPath }/gallery/upload" + galleryVo.saveName)
+				$("#viewModelImg").attr("src", "${pageContext.request.contextPath }/upload/" + galleryVo.saveName)
 				
 				
-				$("#viedModelContent").html(galleryVo.content);
-				
-				
-				$("deleteNo").attr("value", galleryVo.no);
+				$("#viedModelContent").text(galleryVo.content);
 				
 				
 			},
