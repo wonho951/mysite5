@@ -37,4 +37,24 @@
 		]]>
 	</insert>
 	
+	
+	<!-- 이미지 한개 읽어오기 -->
+	<select id = "selectOne" parameterType = "int" resultType = "GalleryVo">
+		<![CDATA[
+			select   g.no
+			        ,g.user_no
+			        ,g.content
+			        ,g.filepath
+			        ,g.orgname
+			        ,g.savename
+			        ,g.filesize
+			        ,u.name
+			from gallery g, users u
+			where g.user_no = u.no
+			and g.no = #{no}
+		]]>
+	</select>
+	
+	
+	
 </mapper>

@@ -209,8 +209,17 @@
 			dataType : "json",
 			success : function(galleryVo){
 				/*성공시 처리해야될 코드 작성*/
-				console.log("vo받기")
-				console.log(galleryVo)
+				console.log("vo받기");
+				console.log(galleryVo);
+				
+				$("#viewModelImg").attr("src", "${pageContext.request.contextPath }/gallery/upload" + galleryVo.saveName)
+				
+				
+				$("#viedModelContent").html(galleryVo.content);
+				
+				
+				$("deleteNo").attr("value", galleryVo.no);
+				
 				
 			},
 			error : function(XHR, status, error) {
@@ -218,8 +227,6 @@
 			}
 		});
 
-		
-		
 
 		$("#viewModal").modal();
 	});

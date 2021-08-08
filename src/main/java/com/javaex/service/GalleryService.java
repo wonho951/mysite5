@@ -101,10 +101,10 @@ public class GalleryService {
 	
 	
 	//이미지 읽어오기
-	public int read() {
+	public GalleryVo read(int no) {
 		System.out.println("[GalleryService.read()]");
 		
-		return 1;
+		return galleryDao.read(no);
 	}
 	
 }

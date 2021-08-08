@@ -35,4 +35,14 @@ public class GalleryDao {
 		
 		return count;
 	}
+	
+	
+	
+	//이미지 한개만 읽어오기
+	public GalleryVo read(int no) {
+		System.out.println("[GalleryDao.read]");
+		
+		return sqlSession.selectOne("gallery.selectOne", no);
+	}
+	
 }
