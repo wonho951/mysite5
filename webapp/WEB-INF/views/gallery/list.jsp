@@ -270,21 +270,25 @@
 			
 			url : "${pageContext.request.contextPath }/api/gallery/delete",     		
 			type : "post",
-			contentType : "application/json",
-			data : {no : no},
-
+			//contentType : "application/json",
+			data :  {no : no},
+			
 
 			dataType : "json",
 			success : function(count){
 				/*성공시 처리해야될 코드 작성*/
 				
-				//리스트에서 지우기
-				$("#listDelete").remove();
 				
-				//삭제 후 모달창 닫기
-				
-				
-				
+				if(count === 1){
+					//삭제 후 모달창 닫기
+					$("#viewModal").modal("hide");
+					
+					//리스트에서 지우기
+					$("#listDelete").remove();
+				} else {
+					//모달창 닫기
+					$("#viewModal").modal("hide");
+				}
 				
 				
 			},

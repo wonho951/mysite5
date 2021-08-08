@@ -107,4 +107,16 @@ public class GalleryService {
 		return galleryDao.read(no);
 	}
 	
+	
+	
+	//이미지 삭제
+	public int delete(int no) {
+		System.out.println("[GalleryService.delete()]");
+		System.out.println(no);
+		
+		
+		return galleryDao.delete(no);
+		
+	}
+	
 }

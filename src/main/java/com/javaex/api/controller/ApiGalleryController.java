@@ -30,4 +30,21 @@ public class ApiGalleryController {
 		return galleryVo;
 	}
 	
+	
+	
+	//삭제
+	@ResponseBody
+	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public int delete(@RequestParam("no") int no) {
+		System.out.println("[ApiGalleryController.delete()]");
+		
+		int count = galleryService.delete(no);
+		System.out.println("[ApiGalleryController.delete()]");
+		System.out.println(count);
+		
+		
+		return count;
+		
+	}
+	
 }

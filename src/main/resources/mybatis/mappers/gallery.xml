@@ -56,5 +56,15 @@
 	</select>
 	
 	
+	<!-- 이미지 삭제하기 -->
+	<delete id="delete" parameterType = "int">
+		<![CDATA[
+			delete from gallery
+			where no = #{no}
+		]]>
+	</delete>
+	
+	
+	
 	
 </mapper>

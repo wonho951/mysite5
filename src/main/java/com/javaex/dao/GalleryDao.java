@@ -45,4 +45,13 @@ public class GalleryDao {
 		return sqlSession.selectOne("gallery.selectOne", no);
 	}
 	
+	
+	//이미지 삭제
+	public int delete(int no) {
+		System.out.println("[GalleryDao.delete]");
+		System.out.println(no);
+		
+		return sqlSession.delete("gallery.delete", no);
+	}
+	
 }
