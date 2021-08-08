@@ -95,9 +95,6 @@
 
 
 
-
-
-
 	<!-- 이미지등록 팝업(모달)창 -->
 	<div class="modal fade" id="addModal">
 		<div class="modal-dialog">
@@ -146,7 +143,7 @@
 				<div class="modal-body">
 
 					<div class="formgroup">
-						<img id="viewModelImg" src="${pageContext.request.contextPath }/gallery/read/${galleryVo.save.name}">
+						<img id="viewModelImg" src="${pageContext.request.contextPath }/upload/${saveName}">
 						<!-- ajax로 처리 : 이미지출력 위치-->
 					</div>
 
@@ -158,7 +155,7 @@
 				<form method="post" action="">
 					<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<c:if test = "${authUser.no != null }">
+						<c:if test = "${authUser != null }">
 							<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
 						</c:if>
 					</div>
@@ -197,13 +194,13 @@
 	//이미지 클릭할때
 	$("#viewArea").on("click", "li", function(){
 		console.log("이미지 클릭")
+
+		var no = $(this).date("no");
+		console.log(no);
+		
 		
 
-
-		
-		
-		
-		$("#viewArea").modal();
+		$("#viewModal").modal();
 	});
 
 
