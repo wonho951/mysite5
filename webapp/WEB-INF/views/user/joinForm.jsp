@@ -53,6 +53,7 @@
 								<label class="form-text" for="input-uid">아이디</label>
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
 								<button type="button" id="btnIdCheck">중복체크</button>
+								<p id = "idcheckMsg">사용어쩌구</p>
 							</div>
 
 							<!-- 비밀번호 -->
@@ -109,7 +110,12 @@
 </body>
 
 <script type="text/javascript">
+	
+	//form 전송 버튼(submit -> 회원가입) 클릭했을때
+	
 
+
+	//아이디 체크버튼 클릭할때
 	$("#btnIdCheck").on("click", function(){
 		console.log("중복체크 클릭")
 		
@@ -124,15 +130,17 @@
 			data : {id :id},
 			
 			dataType : "json",
-			success : function(guestbookVo){
+			success : function(state){
 				/*성공시 처리해야될 코드 작성*/
-				console.log(guestbookVo);
-				render(guestbookVo, "up");
+				console.log(state);
 				
-				//입력폼 초기화
-				$("#input-uname").val("");	//()안에 ""있으면 값 비워줌
-				$("#input-pass").val("");
-				$("[name = 'content']").val("");
+				if(state == true){
+					$("#idcheckMsg").html("사용가능한 아이디 입니다.")
+				}else if(state == false){
+					$("#idcheckMsg").html("사용중인 아이디 입니다. 다른 id를 사용해 주세요")
+				} else {
+					$("#idcheckMsg").html("관리자에게 문의")
+				}
 				
 			},
 			error : function(XHR, status, error) {
