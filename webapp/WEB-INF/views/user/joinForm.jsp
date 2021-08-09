@@ -45,8 +45,8 @@
 				<!-- //content-head -->
 
 				<div id="user">
-					<div id="joinForm">
-						<form action="${pageContext.request.contextPath}/user/join" method="get">
+					<div >
+						<form id = "joinForm" action="${pageContext.request.contextPath}/user/join" method="get">
 
 							<!-- 아이디 -->
 							<div class="form-group" id = "idcheckok">
@@ -111,8 +111,35 @@
 
 <script type="text/javascript">
 	
-	//form 전송 버튼(submit -> 회원가입) 클릭했을때
-	
+	//Form 전송 버튼 클릭했을때
+	$("#joinForm").on("submit", function() {
+	    console.log("form 전송 버튼 클릭했을때");
+	   
+	    //패스워드 8글자 이상 체크
+	    var password = $("#input-pass").val();
+	    if(password.length < 8) {
+	       alert("패스워드를 8글자 이상 입력해 주세요");
+	       return false;
+	    }
+	   
+	    //이름 체크
+	    var name = $("#input-name").val();
+	    if(name.length < 1){
+	 	   alert("이름을 입력해 주세요");
+	 	      return false;
+	    }
+	   
+	   
+	    //약관동의 체크
+	    var agree = $("chk-agree").is(":checked");
+	    console.log(agree);
+		if(agree == false){
+			alert("약관에 동의해 주세요.");
+			return false;
+		}
+	   
+	    return true;
+	});
 
 
 	//아이디 체크버튼 클릭할때
