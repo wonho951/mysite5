@@ -144,16 +144,23 @@ public class UserController {
 	}
 
 	
-	
+	/*
 	//아이디 중복체크
 	@RequestMapping(value = "user/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
 	public int idCheck(UserVo userVo) {
 		System.out.println("[UserController.idCheck]");
+		System.out.println(userVo);
 		
 		int count = userService.idCheck(userVo);
+		System.out.println("[UserController.idCheck]");
+		System.out.println(userVo);
+		
 		
 		return count;
 		
-	}
+	}*/
+	
+	
+	/* 아이디 중복체크(ajax) */
 	
 }

@@ -54,15 +54,20 @@ public class UserDao {
 		return sqlSession.update("user.update", userVo);
 	}
 	
-	
-	//아이지 중복체크
+	/*
+	//아이디 중복체크
 	public int idCheck(UserVo userVo) {
 		System.out.println("[UserDao.idCheck()]");
+		System.out.println(userVo);
+		
 		
 		int count = sqlSession.selectOne("user.idcheck", userVo);
 		
 		return count;
 		
-	}
+	}*/
+	
+	
+	/* 아이디 중복체크(ajax) */
 	
 }

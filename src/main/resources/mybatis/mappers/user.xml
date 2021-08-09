@@ -58,7 +58,7 @@
 	
 	
 	<!-- 아이디 중복체크 -->
-	<select id="idcheck" resultType = "int">
+	<select id="idcheck" parameterType = "UserVo" resultType = "int">
 		<![CDATA[
 			select count(*)
 			from users

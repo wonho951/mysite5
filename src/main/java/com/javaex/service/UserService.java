@@ -51,13 +51,17 @@ public class UserService {
 		return userDao.modify(userVo);
 	}
 	
-	
+	/*
 	//아이디중복체크
 	public int idCheck(UserVo userVo) {
 		System.out.println("[UserService.idCheck()]");
+		System.out.println(userVo);
 		
 		int count = userDao.idCheck(userVo);
 		
 		return count;
-	}
+	}*/
+	
+	
+	/* 아이디 중복체크(ajax) */
 }

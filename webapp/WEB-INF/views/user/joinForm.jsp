@@ -49,7 +49,7 @@
 						<form action="${pageContext.request.contextPath}/user/join" method="get">
 
 							<!-- 아이디 -->
-							<div class="form-group">
+							<div class="form-group" id = "idcheckok">
 								<label class="form-text" for="input-uid">아이디</label>
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
 								<button type="button" id="idcheck">중복체크</button>
@@ -109,25 +109,33 @@
 </body>
 
 <script type="text/javascript">
+
+	/*
+	//아이디 중복체크 - 내가 해본거 -> 안됨ㅋ 짜증나네
 	$("#idcheck").on("click", function(){
 		console.log("중복체크 클릭");
 		
-		var id = $("#input-uid").val();
+		
 		
 		$.ajax({
 			
 			url : "${pageContext.request.contextPath }/user/idcheck?id=" + id,     		
 			type : "post",
 			//contentType : "application/json", 
-			data : {"id" : id},
+			data : {"id" : $("#input-uid").val()},
 
 
 			dataType : "json",
 			success : function(result){
 				/*성공시 처리해야될 코드 작성*/
+				/*
 				console.log("1 = 중복 / 0 = 노중복 " + data)
 				
-				
+				if(data == 1){
+					$("#idcheckok").text("사용중인 아이디 입니다.");
+				} else {
+					$("#idcheckok").text("사용가능한 아이디 입니다.");
+				}
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -135,7 +143,13 @@
 		});
 
 		
-	});
+	});*/
+	
+	
+	
+	
+	
+	
 
 </script>
 
