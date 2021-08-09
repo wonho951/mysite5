@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 </head>
 
@@ -50,7 +52,7 @@
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label>
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="">중복체크</button>
+								<button type="button" id="idcheck">중복체크</button>
 							</div>
 
 							<!-- 비밀번호 -->
@@ -105,5 +107,38 @@
 	<!-- //wrap -->
 
 </body>
+
+<script type="text/javascript">
+	$("#idcheck").on("click", function(){
+		console.log("중복체크 클릭");
+		
+		var id = $("#input-uid").val();
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/user/idcheck?id=" + id,     		
+			type : "post",
+			//contentType : "application/json", 
+			data : {"id" : id},
+
+
+			dataType : "json",
+			success : function(result){
+				/*성공시 처리해야될 코드 작성*/
+				console.log("1 = 중복 / 0 = 노중복 " + data)
+				
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+
+		
+	});
+
+</script>
+
+
 
 </html>

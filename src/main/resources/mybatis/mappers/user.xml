@@ -56,4 +56,15 @@
 	</update>
 	
 	
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idcheck" resultType = "int">
+		<![CDATA[
+			select count(*)
+			from users
+			where id = #{id}
+		]]>
+	</select>
+	
+	
 </mapper>
