@@ -119,7 +119,6 @@
 		$.ajax({
 			
 			url : "${pageContext.request.contextPath }/user/idcheck",		
-			url : "${pageContext.request.contextPath }/api/guestbook/write",
 			type : "post",
 			//contentType : "application/json",	//json방식으로 보내겠다!
 			data : {id :id},

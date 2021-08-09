@@ -67,7 +67,15 @@ public class UserService {
 	public boolean getUser(String id) {	//메소드 이름이 같지만 파라미터 다름. -> 주의해야함. 혹시라도 같은거 있을 수 있음.
 		System.out.println("[UserService.getUser(String)]");
 		
-		return true;
+		UserVo userVo = userDao.selectUser(id);
+		//System.out.println(userVo);
+		
+		if(userVo == null) {	//db에 없는 경우 - > 사용할 수 있는 아이디
+			return true;
+		}else {					//db에 있는 경우 -> 사용할 수 없는 아이디
+			return false;
+		}
+		
 	}
 	
 	

@@ -69,5 +69,15 @@ public class UserDao {
 	
 	
 	/* 아이디 중복체크(ajax) */
-	
+	//회원정보 가져오기 -> 아이디 체크
+	public UserVo selectUser(String id) {
+		System.out.println("[UserDao.selectUser()]");
+		System.out.println(id);
+		
+		//UserVo userVo = 
+		//System.out.println(userVo);
+		
+		
+		return sqlSession.selectOne("user.selectUserById", id);
+	}
 }

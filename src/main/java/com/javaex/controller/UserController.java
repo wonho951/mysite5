@@ -167,7 +167,7 @@ public class UserController {
 		System.out.println("[UserController.idCheck]");
 		System.out.println(id);
 		
-		boolean state = userService.getUser(id);
+		userService.getUser(id);
 		System.out.println("[UserController.idCheck]");
 		System.out.println(id);
 		
