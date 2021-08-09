@@ -151,11 +151,7 @@
 				console.error(status + " : " + error);
 			}
 		});
-		
-		
-		
-	});n
-
+	});
 	
 	
 	/* 
@@ -222,11 +218,7 @@
 				console.error(status + " : " + error);
 			}
 		}); 
-		
-		
-		
 	});
-
 
 
 	/*
