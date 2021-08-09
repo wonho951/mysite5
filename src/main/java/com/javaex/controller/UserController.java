@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -164,9 +165,9 @@ public class UserController {
 	
 	/* 아이디 중복체크(ajax) - 선생님 */
 	@ResponseBody
-	@RequestMapping(value = "user/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/user/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
 	public boolean idCheck(@RequestParam("id") String id) {
-		System.out.println("[UserController.idCheck]");
+		System.out.println("[UserController.idCheck()]");
 		System.out.println(id);
 		
 		boolean state = userService.getUser(id);
@@ -174,5 +175,19 @@ public class UserController {
 		System.out.println(id);
 		
 		return state;
+	}
+	
+	/* json방식으로 데이터 받기 */
+	@ResponseBody
+	@RequestMapping(value = "/user/join2", method = {RequestMethod.GET, RequestMethod.POST})
+	public int join2(@RequestBody UserVo userVo) {
+		System.out.println("[UserController.join2()]");
+		System.out.println(userVo);
+		
+		
+		//서비스를통해 회원정보 저장
+		int count = userService.join(userVo);
+		
+		return count;
 	}
 }

@@ -111,7 +111,55 @@
 
 <script type="text/javascript">
 	
-	//Form 전송 버튼 클릭했을때
+	//데이터를 json형식으로 보내기 - 파라미터로 안보내고 문자열로 데이터를 보낸다
+	//form 사용하지 않고 -> form처럼 사용하기
+	//parameter 사용하지 않고 -> json으로 데이터를 보낸다.
+	$("#btn-submit").on("click", function(){
+		event.preventDefault();
+		console.log("json방식으로 데이터 보내기");
+
+		//데이터 모으기
+		var userVo = {
+				id :$("#input-uid").val(),
+				password :$("#input-pass").val(),
+				name : $("#input-name").val(),
+				gender : $("[name=gender]").val()
+				//gender:	""				//얘는 나중에 생길 수도 있기 때문에 값이 없는 상태로 해둠.
+		};
+		
+		console.log(userVo);
+		console.log(JSON.stringify(userVo));
+		//나중에 값을 추가 해야 할 경우가 있을때 사용하는 문법
+		//userVo.gender = $("[name=gender]").val();
+		//console.log(userVo);
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/user/join2",
+			type : "post",
+			contentType : "application/json",	//json방식으로 보내겠다라고 알려주는거. -> json 사용할거면 꼭 해야함.
+			data : JSON.stringify(userVo),	//js 객체를 json형식(문자열)으로 변경해야함.
+			
+			dataType : "json",
+			success : function(count){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(count);
+				
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+		
+		
+	});n
+
+	
+	
+	/* 
+	//Form 전송 버튼 클릭했을때 -> submit는 특수한 경우.
 	$("#joinForm").on("submit", function() {
 	    console.log("form 전송 버튼 클릭했을때");
 	   
@@ -139,7 +187,7 @@
 		}
 	   
 	    return true;
-	});
+	}); */
 
 
 	//아이디 체크버튼 클릭할때
@@ -147,7 +195,7 @@
 		console.log("중복체크 클릭")
 		
 		var id = $("#input-uid").val();
-		console.log(id)
+		console.log(id);
 		
 		$.ajax({
 			
@@ -178,17 +226,6 @@
 		
 		
 	});
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -226,11 +263,6 @@
 
 		
 	});*/
-	
-	
-	
-	
-	
 	
 
 </script>
