@@ -52,7 +52,7 @@
 							<div class="form-group" id = "idcheckok">
 								<label class="form-text" for="input-uid">아이디</label>
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="idcheck">중복체크</button>
+								<button type="button" id="btnIdCheck">중복체크</button>
 							</div>
 
 							<!-- 비밀번호 -->
@@ -109,6 +109,54 @@
 </body>
 
 <script type="text/javascript">
+
+	$("#btnIdCheck").on("click", function(){
+		console.log("중복체크 클릭")
+		
+		var id = $("#input-uid").val();
+		console.log(id)
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/user/idcheck",		
+			url : "${pageContext.request.contextPath }/api/guestbook/write",
+			type : "post",
+			//contentType : "application/json",	//json방식으로 보내겠다!
+			data : guestbookVo,
+			
+			dataType : "json",
+			success : function(guestbookVo){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(guestbookVo);
+				render(guestbookVo, "up");
+				
+				//입력폼 초기화
+				$("#input-uname").val("");	//()안에 ""있으면 값 비워줌
+				$("#input-pass").val("");
+				$("[name = 'content']").val("");
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		}); 
+		
+		
+		
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/*
 	//아이디 중복체크 - 내가 해본거 -> 안됨ㅋ 짜증나네

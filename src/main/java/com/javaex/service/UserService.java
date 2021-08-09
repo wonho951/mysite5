@@ -64,4 +64,14 @@ public class UserService {
 	
 	
 	/* 아이디 중복체크(ajax) */
+	public boolean getUser(String id) {	//메소드 이름이 같지만 파라미터 다름. -> 주의해야함. 혹시라도 같은거 있을 수 있음.
+		System.out.println("[UserService.getUser(String)]");
+		
+		return true;
+	}
+	
+	
+	
+	
+	
 }
