@@ -175,7 +175,7 @@
 	   
 	   
 	    //약관동의 체크
-	    var agree = $("chk-agree").is(":checked");
+	    var agree = $("#chk-agree").is(":checked");
 	    console.log(agree);
 		if(agree == false){
 			alert("약관에 동의해 주세요.");
