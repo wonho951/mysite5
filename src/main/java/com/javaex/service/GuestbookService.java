@@ -71,6 +71,14 @@ public class GuestbookService {
 	}*/
 	
 	
+	//no값으로 no의 모든 정보 가져오기 -- 안드로이드 사용
+	public GuestbookVo readGuest(int no) {
+		System.out.println("GuestbookService.readGuest()");
+		GuestbookVo guestbookVo = guestDao.selectGuestbook(no);
+		
+		return guestbookVo;
+	}
+	
 	
 	
 }
