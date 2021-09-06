@@ -71,11 +71,16 @@ public class ApiGuestbookController {
 	
 	//안드로이드 방명록 글 1개 가져오기
 	@ResponseBody
-	@RequestMapping(value = "")
-	public String read() {
+	@RequestMapping(value = "/read", method = {RequestMethod.GET, RequestMethod.POST})
+	public GuestbookVo read(@RequestBody GuestbookVo guestbookVo) {
 		System.out.println("[ApiGuestbookController.read()]");
+		System.out.println(guestbookVo);
 		
-		return null;
+		GuestbookVo resultVo = guestService.readGuest(guestbookVo.getNo());
+		
+		System.out.println(resultVo);
+		
+		return resultVo;
 	}
 	
 	
